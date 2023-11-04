@@ -8,13 +8,13 @@ import React, { useState } from 'react';
 
 
 const AdjustmentControls = () => {
-  const [brightness, setBrightness] = useState(100);
-  const [exposure, setExposure] = useState(100);
-  const [contrast, setContrast] = useState(100);
-  const [highlights, setHighlights] = useState(100);
+  const [brightness, setBrightness] = useState(0);
+  const [exposure, setExposure] = useState(0);
+  const [contrast, setContrast] = useState(0);
+  const [highlights, setHighlights] = useState(0);
 
-  const [saturation, setSaturation] = useState(100);
-  const [tint, setTint] = useState(100);
+  const [saturation, setSaturation] = useState(0);
+  const [tint, setTint] = useState(0);
 
 
 
@@ -35,61 +35,90 @@ const AdjustmentControls = () => {
 
   const handleBrightnessChange = (e: any) => {
     const value = e.target.value;
-    setBrightness(value);
-    const newBrightness = parseInt(e.target.value, 10);
-    updateCurrentBrightnessText(newBrightness);
-    updateImageStyles();
+    const mappedValue = parseInt(value, 20) - 100; // Map the value from 0 to 200 to -100 to 100
+
+    // Ensure that the value remains within the valid range
+    if (mappedValue >= -100 && mappedValue <= 100) {
+      setBrightness(mappedValue);
+      updateCurrentBrightnessText(mappedValue);
+      updateImageStyles();
+    } else if (mappedValue < -100) {
+      setBrightness(-100);
+      updateCurrentBrightnessText(-100);
+      updateImageStyles();
+    } else {
+      setBrightness(100);
+      updateCurrentBrightnessText(100);
+      updateImageStyles();
+    }
   };
+
 
   const handleExposureChange = (e: any) => {
     const value = e.target.value;
-    setExposure(value);
-    const newExposure = parseInt(e.target.value, 10);
-    updateCurrentExposureText(newExposure);
+    const mappedValue = parseInt(value, 20) - 100;
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setExposure(clampedValue);
+    updateCurrentExposureText(clampedValue);
     updateImageStyles();
   };
 
   const handleContrastChange = (e: any) => {
     const value = e.target.value;
-    setContrast(value);
-    const newContrast = parseInt(e.target.value, 10);
-    updateCurrentContrastText(newContrast);
+    const mappedValue = parseInt(value, 20) - 100;
+
+    // Ensure that the value remains within the valid range
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setContrast(clampedValue);
+    updateCurrentContrastText(clampedValue);
     updateImageStyles();
   };
 
+
   const handleHighlightsChange = (e: any) => {
     const value = e.target.value;
-    setHighlights(value);
-    const newHighlights = parseInt(e.target.value, 10);
-    updateCurrentHighlightsText(newHighlights);
+    const mappedValue = parseInt(value, 10);
+
+    // Ensure that the value is within the valid range of -100 to 100
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setHighlights(clampedValue);
+    updateCurrentHighlightsText(clampedValue);
     updateImageStyles();
   };
 
   const handleSaturationChange = (e: any) => {
     const value = e.target.value;
-    setSaturation(value);
-    const newSaturation = parseInt(e.target.value, 10);
-    updateCurrentSaturationText(newSaturation);
+    const mappedValue = parseInt(value, 10);
+
+    // Ensure that the value is within the valid range of -100 to 100
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setSaturation(clampedValue);
+    updateCurrentSaturationText(clampedValue);
     updateImageStyles();
   };
+
 
   const handleTintChange = (e: any) => {
     const value = e.target.value;
-    setTint(value);
-    const newTint = parseInt(e.target.value, 10);
-    updateCurrentTintText(newTint);
+    const mappedValue = parseInt(value, 10);
+
+    // Ensure that the value is within the valid range of -100 to 100
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setTint(clampedValue);
+    updateCurrentTintText(clampedValue);
     updateImageStyles();
   };
-
 
 
 
   const calculateBackground = (value: any) => {
-
-    const percentage = (value / 200) * 100;
-
+    const percentage = ((value + 100) / 200) * 100;
     const background = `linear-gradient(to right, #73F89D 0%, #48A0F9 ${percentage}%, #fff ${percentage}%)`;
-
     return background;
   }
 
@@ -99,11 +128,11 @@ const AdjustmentControls = () => {
 
 
   const decreaseBrightness = () => {
-    setBrightness((prevBrightness) => Math.max(0, prevBrightness - 1));
+    setBrightness((prevBrightness) => Math.max(-100, prevBrightness - 1));
   };
 
   const increaseBrightness = () => {
-    setBrightness((prevBrightness) => Math.min(200, prevBrightness + 1));
+    setBrightness((prevBrightness) => Math.min(100, prevBrightness + 1));
   };
 
 
@@ -121,11 +150,11 @@ const AdjustmentControls = () => {
 
 
   const decreaseExposure = () => {
-    setExposure((prevExposure) => Math.max(0, prevExposure - 1));
+    setExposure((prevExposure) => Math.max(-100, prevExposure - 1));
   };
 
   const increaseExposure = () => {
-    setExposure((prevExposure) => Math.min(200, prevExposure + 1));
+    setExposure((prevExposure) => Math.min(100, prevExposure + 1));
   };
 
 
@@ -140,11 +169,11 @@ const AdjustmentControls = () => {
   //  ---------------------------------Contrast-----------------------------------
 
   const decreaseContrast = () => {
-    setContrast((prevContrast) => Math.max(0, prevContrast - 1));
+    setContrast((prevContrast) => Math.max(-100, prevContrast - 1));
   };
 
   const increaseContrast = () => {
-    setContrast((prevContrast) => Math.min(200, prevContrast + 1));
+    setContrast((prevContrast) => Math.min(100, prevContrast + 1));
   };
 
 
@@ -157,11 +186,11 @@ const AdjustmentControls = () => {
   //  ---------------------------------Highlights-----------------------------------
 
   const decreaseHighlights = () => {
-    setHighlights((prevHighlights) => Math.max(0, prevHighlights - 1));
+    setHighlights((prevHighlights) => Math.max(-100, prevHighlights - 1));
   };
 
   const increaseHighlights = () => {
-    setHighlights((prevHighlights) => Math.min(200, prevHighlights + 1));
+    setHighlights((prevHighlights) => Math.min(100, prevHighlights + 1));
   };
 
 
@@ -174,11 +203,11 @@ const AdjustmentControls = () => {
   //  ---------------------------------Saturation-----------------------------------
 
   const decreaseSaturation = () => {
-    setTint((prevSaturation) => Math.max(0, prevSaturation - 1));
+    setTint((prevSaturation) => Math.max(-100, prevSaturation - 1));
   };
 
   const increaseSaturation = () => {
-    setTint((prevSaturation) => Math.min(200, prevSaturation + 1));
+    setTint((prevSaturation) => Math.min(100, prevSaturation + 1));
   };
 
 
@@ -191,11 +220,11 @@ const AdjustmentControls = () => {
   //  ---------------------------------Tint-----------------------------------
 
   const decreaseTint = () => {
-    setTint((prevTint) => Math.max(0, prevTint - 1));
+    setTint((prevTint) => Math.max(-100, prevTint - 1));
   };
 
   const increaseTint = () => {
-    setTint((prevTint) => Math.min(200, prevTint + 1));
+    setTint((prevTint) => Math.min(100, prevTint + 1));
   };
 
 
@@ -223,17 +252,19 @@ const AdjustmentControls = () => {
           <div className='relative w-full'>
             <input
               type="range"
-              min="0"
-              max="200"
+              min="-100"
+              max="100"
+              step="1"
               value={brightness}
               onChange={handleBrightnessChange}
               onInput={updateImageStyles}
               className='w-full'
               style={{ background: calculateBackground(brightness) }}
             />
-            <span className="current-brightness absolute text-[12px] font-[600] top-[-20px]" style={{ left: `calc(${brightness / 2}% - 10px )` }}>
+            <span className="current-brightness absolute text-[12px] font-[600] top-[-20px]" style={{ left: `calc(${(brightness + 100) / 2}% - 10px )` }}>
               {brightness}
             </span>
+
 
           </div>
           <button onClick={increaseBrightness} className='font-bold text-[20px]'>+</button>
@@ -246,22 +277,22 @@ const AdjustmentControls = () => {
           <button onClick={decreaseExposure} className='font-bold text-[20px]'>-</button>
 
           <div className='w-full relative'>
-
             <input
               type="range"
               id='exposure'
-              min="0"
-              max="200"
+              min="-100"
+              max="100"
+              step="1"
               value={exposure}
               onChange={handleExposureChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(exposure) }}
             />
-            <span className="current-exposure absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${exposure / 2}% - 10px )` }}>
+            <span className="absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(exposure + 100) / 2}% - 10px )` }}>
               {exposure}
             </span>
-
           </div>
+
           <button onClick={increaseExposure} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
@@ -275,18 +306,21 @@ const AdjustmentControls = () => {
             <input
               type="range"
               id='contrast'
-              min="0"
-              max="200"
+              min="-100"
+              max="100"
+              step="1"
               value={contrast}
               onChange={handleContrastChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(contrast) }}
             />
-            <span className="current-contrast absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${contrast / 2}% - 10px )` }}>
-              {contrast}
+            <span className="absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(contrast + 100) / 2}% - 10px )` }}>
+              {contrast >= 0 ? `${contrast}` : contrast}
             </span>
 
+
           </div>
+
           <button onClick={increaseContrast} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
@@ -300,14 +334,14 @@ const AdjustmentControls = () => {
             <input
               type="range"
               id='highlights'
-              min="0"
-              max="200"
+              min="-100"
+              max="100"
               value={highlights}
               onChange={handleHighlightsChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(highlights) }}
             />
-            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${highlights / 2}% - 10px )` }}>
+            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(highlights + 100) / 2}% - 10px )` }}>
               {highlights}
             </span>
 
@@ -326,14 +360,14 @@ const AdjustmentControls = () => {
             <input
               type="range"
               id='saturation'
-              min="0"
-              max="200"
+              min="-100"
+              max="100"
               value={saturation}
               onChange={handleSaturationChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(saturation) }}
             />
-            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${saturation / 2}% - 10px )` }}>
+            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(saturation + 100) / 2}% - 10px )` }}>
               {saturation}
             </span>
 
@@ -351,16 +385,17 @@ const AdjustmentControls = () => {
             <input
               type="range"
               id='tint'
-              min="0"
-              max="200"
+              min="-100"
+              max="100"
               value={tint}
               onChange={handleTintChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(tint) }}
             />
-            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${tint / 2}% - 10px )` }}>
+            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(tint + 100) / 2}% - 10px )` }}>
               {tint}
             </span>
+
 
           </div>
           <button onClick={increaseTint} className='font-bold text-[20px]'>+</button>
