@@ -74,14 +74,14 @@ const AudioRight = () => {
                 <div className="px-[18px] pt-[27px]">
                     <div className="mx-auto border flex space-x-0 px-4 rounded-[8px] justify-between items-center bg-[#FAFAFA] boxShadow z-50">
                         <p
-                            className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px]  px-3 ${selectedOption === "selectVoice" ? "bg-[#2B303A] text-white" : "text-black"
+                            className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] font-medium px-3 ${selectedOption === "selectVoice" ? "bg-[#2B303A] text-white" : "text-black"
                                 }`}
                             onClick={() => handleOptionClick("selectVoice")}
                         >
                             Select Voice
                         </p>
                         <p
-                            className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] px-8 py-1 ${selectedOption === "voice" ? "bg-[#2B303A] text-white" : "text-black"
+                            className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] font-medium px-8 py-1 ${selectedOption === "voice" ? "bg-[#2B303A] text-white" : "text-black"
                                 }`}
                             onClick={() => handleOptionClick("voice")}
                         >

@@ -434,28 +434,28 @@ const AudioLeft = () => {
                     <div className="px-[11px] pt-[5px]">
                         <div className="mx-auto border flex space-x-0 px-2 rounded-[8px] justify-between items-center bg-[#FAFAFA] boxShadow z-50">
                             <p
-                                className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px]  px-3 ${selectedOption === "text" ? "bg-[#2B303A] text-white" : "text-black"
+                                className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] font-medium px-3 ${selectedOption === "text" ? "bg-[#2B303A] text-white" : "text-black"
                                     }`}
                                 onClick={() => handleOptionClick("text")}
                             >
                                 Text
                             </p>
                             <p
-                                className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] px-2 py-1 ${selectedOption === "image" ? "bg-[#2B303A] text-white" : "text-black"
+                                className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] font-medium px-2 py-1 ${selectedOption === "image" ? "bg-[#2B303A] text-white" : "text-black"
                                     }`}
                                 onClick={() => handleOptionClick("image")}
                             >
                                 Image
                             </p>
                             <p
-                                className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] px-2 py-1 ${selectedOption === "audio" ? "bg-[#2B303A] text-white" : "text-black"
+                                className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] font-medium px-2 py-1 ${selectedOption === "audio" ? "bg-[#2B303A] text-white" : "text-black"
                                     }`}
                                 onClick={() => handleOptionClick("audio")}
                             >
                                 Audio
                             </p>
                             <p
-                                className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 py-1 ${selectedOption === "music" ? "bg-[#2B303A] text-white" : ""
+                                className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 font-medium py-1 ${selectedOption === "music" ? "bg-[#2B303A] text-white" : ""
                                     }`}
                                 onClick={() => handleOptionClick("music")}
                             >
@@ -471,13 +471,13 @@ const AudioLeft = () => {
             </section>
             <div className="flex justify-between items-center mt-4">
                 <div className="text-zinc-900 text-base font-semibold font-['Inter']">Options</div>
-                <div className="text-black text-[10px] font-semibold font-['Inter']">(?)</div>
+                <div className="text-black text-[10px] font-semibold font-['Inter'] cursor-pointer">(?)</div>
             </div>
 
             {selectedOption === "text" ? (
                 <div className="mt-4">
                     <div className="range-container ">
-                        <label htmlFor="transpose" className='font-[500] text-[12px] mb-3'>Transpose</label>
+                        <label htmlFor="transpose" className='font-[500] text-[12px] mb-2'>Transpose</label>
                         <div className='flex items-center space-x-3'>
                             <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px]">
                                 -
@@ -494,7 +494,7 @@ const AudioLeft = () => {
                                     // onInput={updateImageStyles}
                                     style={{ background: calculateBackground(transpose) }}
                                 />
-                                <span className="current-exposure absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${((transpose / (12 - (-12))) * 100 + 50)}% - 10px)` }}>
+                                <span className="current-exposure absolute text-[10px] font-[600] top-[-8px]" style={{ left: `calc(${((transpose / (12 - (-12))) * 100 + 50)}% - 10px)` }}>
                                     {transpose}
                                 </span>
                             </div>
@@ -522,7 +522,7 @@ const AudioLeft = () => {
                                     onChange={handleIndexRatioChange}
                                     style={{ background: calculateBackgroundForIndexRatio(indexRatio) }}
                                 />
-                                <span className="current-exposure absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${((indexRatio) * 100)}% - 10px)` }}>
+                                <span className="current-exposure absolute text-[10px] font-[600] top-[-7px]" style={{ left: `calc(${((indexRatio) * 100)}% - 10px)` }}>
                                     {indexRatio.toFixed(2)}  {/* Display indexRatio with two decimal places */}
                                 </span>
                             </div>
@@ -535,7 +535,7 @@ const AudioLeft = () => {
 
                     </div>
                     <div className="range-container">
-                        <label htmlFor="protection" className='font-[500] text-[12px] mb-3'>Protection Amount :</label>
+                        <label htmlFor="protection" className='font-[500] text-[12px] mb-0'>Protection Amount :</label>
                         <div className='flex items-center space-x-3'>
                             <button onClick={(e) => { e.preventDefault(); decreaseProtection(); }} className="font-bold text-[20px]">
                                 -
@@ -553,7 +553,7 @@ const AudioLeft = () => {
                                     // onInput={updateImageStyles}
                                     style={{ background: calculateBackgroundForProtection(protection) }}
                                 />
-                                <span className=" absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${((protection / .5) * 100)}% - 10px)` }}>
+                                <span className=" absolute text-[10px] font-[600] top-[20px]" style={{ left: `calc(${((protection / .5) * 100)}% - 10px)` }}>
                                     {protection}
                                 </span>
 
@@ -569,7 +569,7 @@ const AudioLeft = () => {
 
                 </div>) : ""}
 
-                {selectedOption === "audio" ? (
+            {selectedOption === "audio" ? (
                 <div className="mt-4">
                     <div className="range-container ">
                         <label htmlFor="transpose" className='font-[500] text-[12px] mb-3'>Transpose</label>
@@ -667,8 +667,8 @@ const AudioLeft = () => {
             {selectedOption === "image" ? (
                 <div className="mt-4">
                     <div className="range-container">
-                        <label htmlFor="duration" className="font-[500] text-[12px] mb-3">
-                            Duration Amount:
+                        <label htmlFor="duration" className="font-[500] text-[12px] mb-0">
+                            Duration:
                         </label>
                         <div className="flex items-center space-x-3">
                             <button onClick={(e) => { e.preventDefault(); decreaseDuration(); }} className="font-bold text-[20px]">
@@ -684,7 +684,7 @@ const AudioLeft = () => {
                                     onChange={handleDurationChange}
                                     style={{ background: calculateBackgroundForSeed(duration) }}
                                 />
-                                <span className=" absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${((duration / 10) * 100)}% - 10px)` }}>
+                                <span className=" absolute text-[10px] font-[600] top-[20px]" style={{ left: `calc(${((duration / 10) * 100)}% - 10px)` }}>
                                     {duration}
                                 </span>
 
@@ -698,8 +698,8 @@ const AudioLeft = () => {
 
                     </div>
                     <div className="range-container">
-                        <label htmlFor="guidanceScale" className="font-[500] text-[12px] mb-3">
-                            Guidance Scale:
+                        <label htmlFor="guidanceScale" className="font-[500] text-[12px] mb-0 mt-1">
+                            Guidance scale:
                         </label>
                         <div className="flex items-center space-x-3">
                             <button onClick={(e) => { e.preventDefault(); decreaseGuidanceScale(); }} className="font-bold text-[20px]">
@@ -717,7 +717,7 @@ const AudioLeft = () => {
                                     style={{ background: calculateBackgroundForGuidance(guidanceScale) }}
                                 />
                                 <span
-                                    className="absolute text-[12px] font-[600] top-[-15px]"
+                                    className="absolute text-[10px] font-[600] top-[20px]"
                                     style={{ left: `calc(${((Math.round(guidanceScale * 100) / 5))}% - 10px)` }}
                                 >
                                     {Math.round(guidanceScale * 100) / 100}  {/* Display guidanceScale with two decimal places */}
@@ -732,8 +732,8 @@ const AudioLeft = () => {
 
                     </div>
                     <div className="range-container">
-                        <label htmlFor="waveform" className="font-[500] text-[12px] mb-3">
-                            Waveform:
+                        <label htmlFor="waveform" className="font-[500] text-[12px] mb-0 mt-2">
+                            Number of waveforms to generate:
                         </label>
                         <div className="flex items-center space-x-3">
                             <button onClick={(e) => { e.preventDefault(); decreaseWaveform(); }} className="font-bold text-[20px]">
@@ -750,7 +750,7 @@ const AudioLeft = () => {
                                     style={{ background: calculateBackgroundForWaveform(waveform) }}
                                 />
                                 <span
-                                    className="absolute text-[12px] font-[600] top-[-15px]"
+                                    className="absolute text-[10px] font-[600] top-[20px]"
                                     style={{ left: `calc(${((waveform / 3) * 100)}% - 10px)` }}
                                 >
                                     {waveform}
@@ -767,7 +767,7 @@ const AudioLeft = () => {
             {selectedOption === "music" ? (
                 <div className="mt-4">
                     <div className="range-container">
-                        <label htmlFor="audioLength" className="font-[500] text-[12px] mb-3">
+                        <label htmlFor="audioLength" className="font-[500] text-[12px] mb-0">
                             Audio length:
                         </label>
                         <div className="flex items-center space-x-3">
@@ -785,7 +785,7 @@ const AudioLeft = () => {
                                     style={{ background: calculateBackgroundForAudio(audioLength) }}
                                 />
                                 <span
-                                    className="absolute text-[12px] font-[600] top-[-15px]"
+                                    className="absolute text-[10px] font-[600] top-[20px]"
                                     style={{ left: `calc(${((audioLength / 30) * 100)}% - 10px)` }}
                                 >
                                     {audioLength}
@@ -797,8 +797,8 @@ const AudioLeft = () => {
                         </div>
                     </div>
                     <div className="range-container">
-                        <label htmlFor="streamingInterval" className="font-[500] text-[12px] mb-3">
-                            Streaming Interval:
+                        <label htmlFor="streamingInterval" className="font-[500] text-[12px] mb-0 mt-1">
+                            Streaming interval:
                         </label>
                         <div className="flex items-center space-x-3">
                             <button onClick={(e) => { e.preventDefault(); decreaseStreamingInterval(); }} className="font-bold text-[20px]">
@@ -816,7 +816,7 @@ const AudioLeft = () => {
                                     style={{ background: calculateBackgroundForStreaming(streamingInterval) }}
                                 />
                                 <span
-                                    className="absolute text-[12px] font-[600] top-[-15px]"
+                                    className="absolute text-[10px] font-[600] top-[20px]"
                                     style={{ left: `calc(${((Math.round(streamingInterval * 10) / 10 / 2.5) * 100)}% - 10px)` }}
                                 >
                                     {Math.round(streamingInterval * 10) / 10}  {/* Display streamingInterval with one decimal place */}
@@ -830,7 +830,7 @@ const AudioLeft = () => {
                         </div>
                     </div>
                     <div className="range-container">
-                        <label htmlFor="seed" className="font-[500] text-[12px] mb-3">
+                        <label htmlFor="seed" className="font-[500] text-[12px] mb-0 mt-1">
                             Seed:
                         </label>
                         <div className="flex items-center space-x-3">
@@ -848,7 +848,7 @@ const AudioLeft = () => {
                                     style={{ background: calculateBackgroundForSeed(seed) }}
                                 />
                                 <span
-                                    className="absolute text-[12px] font-[600] top-[-15px]"
+                                    className="absolute text-[10px] font-[600] top-[20px]"
                                     style={{ left: `calc(${((seed / 10) * 100)}% - 10px)` }}
                                 >
                                     {seed}
@@ -865,7 +865,7 @@ const AudioLeft = () => {
 
 
 
-            <div className="px-0 pt-0 mt-8 mb-3 z-10">
+            <div className="px-0 pt-0 mt-6 mb-3 z-10">
                 <button
                     type="button"
                     className="buttonBg w-full h-[50px] rounded-[8px] text-[14px] text-white font-bold"

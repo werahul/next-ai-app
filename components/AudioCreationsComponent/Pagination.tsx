@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, handle
     const lastPageNumbers = pageNumbers.slice(-1); // Last page number
 
     return (
-      <div className="flex items-center mt-8">
+      <div className="flex items-center mt-8 ">
         <span
           className={`cursor-pointer p-2 mx-1 ${localPage === 1 ? 'text-gray-300' : 'cursor-pointer text-blue-400'
             }`}
