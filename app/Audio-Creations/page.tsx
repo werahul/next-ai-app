@@ -12,7 +12,7 @@ interface SelectedFile {
     selectedFile: any
   }
 
-const page = ({selectedFile} : SelectedFile) => {
+const page = ({selectedFile} : any) => {
     return (
             <div className='padding-container2'>
               <section className='max-container flexOne gap-x-10 pt-10  md:gap-10 lg:pt-10  '>
