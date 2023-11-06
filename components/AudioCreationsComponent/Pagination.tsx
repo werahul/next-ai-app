@@ -27,7 +27,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, handle
     }
 
     return (
-      <div className="flex items-center mt-8  justify-center min-w-[100%] ">
+      <div className="flex items-center mt-8  justify-center font-satoshi min-w-[100%] ">
         <span
           className={`cursor-pointer mx-2 ${currentPage === 1 ? 'text-gray-300' : 'text-blue-400'}`}
           onClick={() => handlePageChange(currentPage - 1)}
@@ -36,8 +36,8 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, handle
           <Image
             src="/leftArw.svg"
             alt="left"
-            width={8}
-            height={5} 
+            width={6}
+            height={6} 
           />
         </span>
 
@@ -66,7 +66,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, handle
           onClick={() => handlePageChange(currentPage + 1)}
         >
           {/* Right Arrow Icon */}
-          <Image src="/rghArow.svg" alt="Right" width={50} height={50}/>
+          <Image src="/rghArow.svg" alt="Right" width={35} height={35}/>
         </span>
       </div>
     );

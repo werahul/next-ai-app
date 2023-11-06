@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'satoshi': ['Satoshi', 'sans'],
+        'satoshi': ['Satoshi', 'sans-serif'],
       },
       colors: {
         green: {
