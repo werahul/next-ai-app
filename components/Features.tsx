@@ -35,7 +35,7 @@ const AdjustmentControls = () => {
 
   const handleBrightnessChange = (e: any) => {
     const value = e.target.value;
-    const mappedValue = parseInt(value, 20) - 100; // Map the value from 0 to 200 to -100 to 100
+    const mappedValue = parseInt(value, 10); // Map the value from 0 to 200 to -100 to 100
 
     // Ensure that the value remains within the valid range
     if (mappedValue >= -100 && mappedValue <= 100) {
@@ -56,7 +56,7 @@ const AdjustmentControls = () => {
 
   const handleExposureChange = (e: any) => {
     const value = e.target.value;
-    const mappedValue = parseInt(value, 20) - 100;
+    const mappedValue = parseInt(value, 10);
     const clampedValue = Math.min(100, Math.max(-100, mappedValue));
 
     setExposure(clampedValue);
@@ -66,7 +66,7 @@ const AdjustmentControls = () => {
 
   const handleContrastChange = (e: any) => {
     const value = e.target.value;
-    const mappedValue = parseInt(value, 20) - 100;
+    const mappedValue = parseInt(value, 10);
 
     // Ensure that the value remains within the valid range
     const clampedValue = Math.min(100, Math.max(-100, mappedValue));
