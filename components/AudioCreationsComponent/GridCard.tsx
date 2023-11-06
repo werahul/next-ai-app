@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const GridCard = ({ card } : any) => (
-  <div className={`w-[98px] h-[146.01px] bg-${card.bgColor} rounded-[10px] flex-col justify-center items-end`}>
+  <div className={`w-[98px] h-[146.01px] bg-blue-400 rounded-[10px] flex-col justify-center items-end`}>
     <div className={`w-[98px] h-[124.73px] bg-emerald-300 rounded-[10px] shadow flex-col justify-center items-end`}>
       <div className="w-[98px] h-[102.95px] bg-white rounded-[10px] flex-col py-1 justify-between items-stretch relative">
         <div className="flex justify-between px-1">
