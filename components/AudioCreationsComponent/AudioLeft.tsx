@@ -6,9 +6,12 @@ import Image from "next/image";
 import { constants } from "buffer";
 import Slider from "./Slider";
 import { any } from "video.js/dist/types/utils/events";
+import OutputMusic from "./OutputMusic";
 
 
-const AudioLeft = () => {
+const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }: any) => {
+    // const [showVideoUpload, setShowVideoUpload] = useState(true);
+    // const [showImageUpload, setShowImageUpload] = useState(false);
     const [protection, setProtection] = useState(0)
     const [transpose, setTranspose] = useState(0)
     const [indexRatio, setIndexRatio] = useState(0)
@@ -18,20 +21,32 @@ const AudioLeft = () => {
     const [audioLength, setAudioLength] = useState(0);
     const [streamingInterval, setStreamingInterval] = useState(0);
     const [seed, setSeed] = useState(0);
+    const [textValue, setTextValue] = useState("");
+
 
     const [selectedFile, setSelectedFile] = useState(null);
-
     const [selectedOption, setSelectedOption] = useState("text");
 
-    const handleFileChange = (event: any) => {
+    const handleTextFileChange = (event: any) => {
+        const file = event.target.files;
+        setTextValue(file)
+    };
+    const handleMusicFileChange = (event: any) => {
         const file = event.target.files[0];
-        setSelectedFile(file);
+        onMusicUpload(file);
+    };
+    const handleAudioFileChange = (event: any) => {
+        const file = event.target.files[0];
+        onAudioUpload(file)
+    };
+    const handleImageFileChange = (event: any) => {
+        const image = event.target.files[0];
+        onImageUpload(image);
     };
 
     const handleOptionClick = (option: any) => {
         setSelectedOption(option);
     };
-
 
 
     const decreaseTranspose = () => {
@@ -394,27 +409,46 @@ const AudioLeft = () => {
             return (
                 <input
                     type="text"
+                    value={textValue}
                     className="font-normal text-[14px] pt-14 px-5 outline-none text-[#737477] mt-[10px] mb-[12px] bg-transparent "
                     placeholder="Type your text..... "
+                    onChange={handleTextFileChange}
                 />
             );
-        } else if (selectedOption === "image" || selectedOption === "music") {
+
+        } else if (selectedOption === "image") {
             return (
                 <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent">
-                    <input type="file" accept={selectedOption === "image" ? "image/*" : "music/*"} id="file-input2" onChange={handleFileChange} />
+                    <input type="file" accept={selectedOption === "image" ? "image/*" : ""} id="file-input2" onChange={handleImageFileChange} />
                     <label htmlFor="file-input2" className="cursor-pointer">
                         <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                         <p className="text-[#737477] text-[14px] pt-[5px]">
-                            {selectedOption === "image" ? "Upload Image" : "Upload Music"}
+                            {selectedOption === "image" ? "Upload Image" : ""}
                         </p>
                     </label>
                 </div>
             );
         }
+
+        else if (selectedOption === "music") {
+            return (
+              <div>
+                <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
+                  <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} />
+                  <label htmlFor="file-input2" className="cursor-pointer">
+                    <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
+                    <p className="text-[#737477] text-[14px] pt-[5px]">Upload Music</p>
+                  </label>
+                </div>
+              </div>
+            );
+          }
+          
+        
         else if (selectedOption === "audio") {
             return (
                 <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">
-                    <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleFileChange} />
+                    <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleAudioFileChange} />
                     <label htmlFor="file-input2" className="cursor-pointer">
                         <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                         <p className="text-[#737477] text-[14px] pt-[5px]">

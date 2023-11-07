@@ -37,6 +37,9 @@ const AudioRight = () => {
         }
       };
 
+
+// Cards Values---------------------------------------------- Array of Cards
+
     const gridCardsData = [
         {
             // bgColor: "blue-400",
@@ -599,6 +602,8 @@ const AudioRight = () => {
             personName: "Person Name25",
         },
     ];
+
+
     const totalPages = Math.ceil(gridCardsData.length / cardsPerPage);
     return (
         <>
