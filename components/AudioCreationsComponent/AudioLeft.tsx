@@ -1,15 +1,19 @@
 "use client"
 
 
-import React, { use, useState } from "react";
+import React, {useState } from "react";
 import Image from "next/image";
-import { constants } from "buffer";
-import Slider from "./Slider";
-import { any } from "video.js/dist/types/utils/events";
-import OutputMusic from "./OutputMusic";
 
 
-const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }: any) => {
+interface AudioLeftProps {
+    onTextChange: (text: string) => void;
+    onMusicUpload: (music: any) => void;
+    onImageUpload: (image: any) => void;
+    onAudioUpload: (audio: any) => void;
+}
+
+
+const AudioLeft = (props: AudioLeftProps) => {
     // const [showVideoUpload, setShowVideoUpload] = useState(true);
     // const [showImageUpload, setShowImageUpload] = useState(false);
     const [protection, setProtection] = useState(0)
@@ -33,21 +37,24 @@ const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }
     };
     const handleMusicFileChange = (event: any) => {
         const file = event.target.files[0];
-        onMusicUpload(file);
+        props.onMusicUpload(file);
     };
     const handleAudioFileChange = (event: any) => {
         const file = event.target.files[0];
-        onAudioUpload(file)
+        props.onAudioUpload(file)
     };
     const handleImageFileChange = (event: any) => {
         const image = event.target.files[0];
-        onImageUpload(image);
+       props.onImageUpload(image);
     };
 
     const handleOptionClick = (option: any) => {
         setSelectedOption(option);
     };
 
+    const handleChange = (event: any) => {
+        props.onTextChange(event.target.value)
+    };
 
     const decreaseTranspose = () => {
         setTranspose((prevTranspose) => Math.max(-12, prevTranspose - 1));
@@ -407,13 +414,15 @@ const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }
     const renderInputBasedOnOption = () => {
         if (selectedOption === "text") {
             return (
-                <input
-                    type="text"
-                    value={textValue}
-                    className="font-normal text-[14px] pt-14 px-5 outline-none text-[#737477] mt-[10px] mb-[12px] bg-transparent "
-                    placeholder="Type your text..... "
-                    onChange={handleTextFileChange}
-                />
+                <div className="flex flex-col">
+                    <input
+                        type="text"
+                        className="font-normal text-[14px] pt-14 px-5 outline-none text-[#737477] mt-[10px] mb-[12px] bg-transparent"
+                        placeholder="Type your text....."
+                        onChange={handleChange}
+                    />
+
+                </div>
             );
 
         } else if (selectedOption === "image") {
@@ -432,19 +441,19 @@ const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }
 
         else if (selectedOption === "music") {
             return (
-              <div>
-                <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
-                  <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} />
-                  <label htmlFor="file-input2" className="cursor-pointer">
-                    <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
-                    <p className="text-[#737477] text-[14px] pt-[5px]">Upload Music</p>
-                  </label>
+                <div>
+                    <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
+                        <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} />
+                        <label htmlFor="file-input2" className="cursor-pointer">
+                            <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
+                            <p className="text-[#737477] text-[14px] pt-[5px]">Upload Music</p>
+                        </label>
+                    </div>
                 </div>
-              </div>
             );
-          }
-          
-        
+        }
+
+
         else if (selectedOption === "audio") {
             return (
                 <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">
@@ -497,8 +506,9 @@ const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }
                             </p>
                         </div>
                     </div>
-                    <div className="px-0 pt-[0px] absolute top-14 z-10">{renderInputBasedOnOption()}</div>
-
+                    <div className="px-0 pt-0 absolute top-14 z-10">
+                        {renderInputBasedOnOption()}
+                    </div>
 
                 </div>
 
@@ -603,7 +613,7 @@ const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }
 
                 </div>) : ""}
 
-                
+
             {selectedOption === "text" ? (
                 <div className="mt-4">
                     <div className="range-container ">
@@ -768,7 +778,7 @@ const AudioLeft = ({ onMusicUpload, onImageUpload, onAudioUpload, onTextUpload }
 
 
                     </div>
-                    <div className="range-container">   
+                    <div className="range-container">
                         <label htmlFor="waveform" className="font-[500] text-[12px] mb-2 mt-2">
                             Number of waveforms to generate:
                         </label>
