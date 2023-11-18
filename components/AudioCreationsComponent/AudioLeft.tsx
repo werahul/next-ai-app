@@ -1,7 +1,7 @@
 "use client"
 
 
-import React, {useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 
@@ -45,7 +45,7 @@ const AudioLeft = (props: AudioLeftProps) => {
     };
     const handleImageFileChange = (event: any) => {
         const image = event.target.files[0];
-       props.onImageUpload(image);
+        props.onImageUpload(image);
     };
 
     const handleOptionClick = (option: any) => {
@@ -523,9 +523,14 @@ const AudioLeft = (props: AudioLeftProps) => {
                     <div className="range-container ">
                         <label htmlFor="transpose" className='font-[500] text-[12px] mb-2'>Transpose</label>
                         <div className='flex items-center space-x-3'>
-                            <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">-12</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+
+                            </div>
+
                             <div className='w-full relative'>
 
                                 <input
@@ -542,9 +547,14 @@ const AudioLeft = (props: AudioLeftProps) => {
                                     {transpose}
                                 </span>
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseTranspose(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">12</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseTranspose(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+
+                            </div>
                         </div>
                         <div className="text-black text-[6px] font-semibold font-['Inter'] mx-auto">(Help +12: male to Female/ 0 No Gender Diff,-12: Female to male conv)</div>
 
@@ -552,9 +562,14 @@ const AudioLeft = (props: AudioLeftProps) => {
                     <div className="range-container">
                         <label htmlFor="indexRatio" className='font-[500] text-[12px] mb-3'>Feature Index Ratio:</label>
                         <div className='flex items-center space-x-3'>
-                            <button onClick={(e) => { e.preventDefault(); decreaseIndexRatio(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseIndexRatio(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+
+                            </div>
                             <div className='w-full relative'>
                                 <input
                                     type="range"
@@ -571,9 +586,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                 </span>
                             </div>
 
-                            <button onClick={(e) => { e.preventDefault(); increaseIndexRatio(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">1</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseIndexRatio(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+
+                            </div>
                         </div>
 
 
@@ -581,9 +600,15 @@ const AudioLeft = (props: AudioLeftProps) => {
                     <div className="range-container">
                         <label htmlFor="protection" className='font-[500] text-[12px] mb-2'>Protection Amount :</label>
                         <div className='flex items-center space-x-3'>
-                            <button onClick={(e) => { e.preventDefault(); decreaseProtection(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+
+                                <button onClick={(e) => { e.preventDefault(); decreaseProtection(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+
+                            </div>
                             <div className='w-full relative'>
 
                                 <input
@@ -603,9 +628,15 @@ const AudioLeft = (props: AudioLeftProps) => {
 
 
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseProtection(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">.5</p>
+
+                                <button onClick={(e) => { e.preventDefault(); increaseProtection(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+
+                            </div>
                         </div>
 
 
@@ -619,9 +650,14 @@ const AudioLeft = (props: AudioLeftProps) => {
                     <div className="range-container ">
                         <label htmlFor="transpose" className='font-[500] text-[12px] mb-2'>Transpose</label>
                         <div className='flex items-center space-x-3'>
-                            <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">-12</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+
+                            </div>
+
                             <div className='w-full relative'>
 
                                 <input
@@ -638,9 +674,14 @@ const AudioLeft = (props: AudioLeftProps) => {
                                     {transpose}
                                 </span>
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseTranspose(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">12</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseTranspose(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+
+                            </div>
                         </div>
                         <div className="text-black text-[6px] font-semibold font-['Inter'] mx-auto">(Help +12: male to Female/ 0 No Gender Diff,-12: Female to male conv)</div>
 
@@ -648,9 +689,14 @@ const AudioLeft = (props: AudioLeftProps) => {
                     <div className="range-container">
                         <label htmlFor="indexRatio" className='font-[500] text-[12px] mb-3'>Feature Index Ratio:</label>
                         <div className='flex items-center space-x-3'>
-                            <button onClick={(e) => { e.preventDefault(); decreaseIndexRatio(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseIndexRatio(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+
+                            </div>
                             <div className='w-full relative'>
                                 <input
                                     type="range"
@@ -667,9 +713,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                 </span>
                             </div>
 
-                            <button onClick={(e) => { e.preventDefault(); increaseIndexRatio(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">1</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseIndexRatio(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+
+                            </div>
                         </div>
 
 
@@ -677,9 +727,15 @@ const AudioLeft = (props: AudioLeftProps) => {
                     <div className="range-container">
                         <label htmlFor="protection" className='font-[500] text-[12px] mb-2'>Protection Amount :</label>
                         <div className='flex items-center space-x-3'>
-                            <button onClick={(e) => { e.preventDefault(); decreaseProtection(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+
+                                <button onClick={(e) => { e.preventDefault(); decreaseProtection(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+
+                            </div>
                             <div className='w-full relative'>
 
                                 <input
@@ -699,9 +755,15 @@ const AudioLeft = (props: AudioLeftProps) => {
 
 
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseProtection(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">.5</p>
+
+                                <button onClick={(e) => { e.preventDefault(); increaseProtection(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+
+                            </div>
                         </div>
 
 
@@ -718,9 +780,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                             Duration:
                         </label>
                         <div className="flex items-center space-x-3">
-                            <button onClick={(e) => { e.preventDefault(); decreaseDuration(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseDuration(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+                            </div>
                             <div className="w-full relative">
                                 <input
                                     type="range"
@@ -736,9 +802,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                 </span>
 
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseDuration(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">10</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseDuration(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+                            </div>
                         </div>
 
 
@@ -749,9 +819,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                             Guidance scale:
                         </label>
                         <div className="flex items-center space-x-3">
-                            <button onClick={(e) => { e.preventDefault(); decreaseGuidanceScale(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseGuidanceScale(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+                            </div>
                             <div className="w-full relative">
                                 <input
                                     type="range"
@@ -771,9 +845,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                 </span>
                             </div>
 
-                            <button onClick={(e) => { e.preventDefault(); increaseGuidanceScale(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">5</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseGuidanceScale(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+                            </div>
                         </div>
 
 
@@ -783,9 +861,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                             Number of waveforms to generate:
                         </label>
                         <div className="flex items-center space-x-3">
-                            <button onClick={(e) => { e.preventDefault(); decreaseWaveform(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseWaveform(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+                            </div>
                             <div className="w-full relative">
                                 <input
                                     type="range"
@@ -803,9 +885,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                     {waveform}
                                 </span>
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseWaveform(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">3</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseWaveform(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -818,9 +904,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                             Audio length:
                         </label>
                         <div className="flex items-center space-x-3">
-                            <button onClick={(e) => { e.preventDefault(); decreaseAudioLength(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseAudioLength(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+                            </div>
                             <div className="w-full relative">
                                 <input
                                     type="range"
@@ -838,9 +928,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                     {audioLength}
                                 </span>
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseAudioLength(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">30</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseAudioLength(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="range-container">
@@ -848,9 +942,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                             Streaming interval:
                         </label>
                         <div className="flex items-center space-x-3">
-                            <button onClick={(e) => { e.preventDefault(); decreaseStreamingInterval(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseStreamingInterval(); }} className="font-bold text-[20px] -mt-3">
+                                    -
+                                </button>
+                            </div>
                             <div className="w-full relative">
                                 <input
                                     type="range"
@@ -870,9 +968,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                 </span>
                             </div>
 
-                            <button onClick={(e) => { e.preventDefault(); increaseStreamingInterval(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">2.5</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseStreamingInterval(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+                            </div>
 
                         </div>
                     </div>
@@ -881,9 +983,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                             Seed:
                         </label>
                         <div className="flex items-center space-x-3">
-                            <button onClick={(e) => { e.preventDefault(); decreaseSeed(); }} className="font-bold text-[20px]">
-                                -
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">0</p>
+                                <button onClick={(e) => { e.preventDefault(); decreaseSeed(); }} className="font-bold text-[20px]">
+                                    -
+                                </button>
+                            </div>
                             <div className="w-full relative">
                                 <input
                                     type="range"
@@ -901,9 +1007,13 @@ const AudioLeft = (props: AudioLeftProps) => {
                                     {seed}
                                 </span>
                             </div>
-                            <button onClick={(e) => { e.preventDefault(); increaseSeed(); }} className="font-bold text-[20px]">
-                                +
-                            </button>
+
+                            <div className="flex flex-col items-center justify-center -mt-1">
+                                <p className="text-[12px] font-semibold">10</p>
+                                <button onClick={(e) => { e.preventDefault(); increaseSeed(); }} className="font-bold text-[20px] -mt-3">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
