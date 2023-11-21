@@ -8,9 +8,11 @@ interface Option {
 }
 const dropdownOptions: Option[][] = [
     [
-        // { value: 'Audio', label: 'Audio' },
-        // { value: 'Pre-process', label: 'Pre-process' },
-        // { value: 'Generate', label: 'Generate' },
+        { value: 'English', label: 'English' },
+        { value: 'Hindi', label: 'Hindi (हिन्दी)' },
+        { value: 'Marathi', label: 'Marathi (मराठी)' },
+        { value: 'Spanish', label: 'Spanish (Español)' },
+        { value: 'Arabic', label: 'Arabic (العربية)' },
     ],
 
 ];

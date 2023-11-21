@@ -94,9 +94,9 @@ const page = ({ selectedFile, inputValue, onInputChange }: any) => {
           )}
 
         </div>
-        <AudioRight />
+        <AudioRight  audio={audioData} music={musicData}/>
       </section>
-      <Timeline />
+      <Timeline audio={audioData} music={musicData}/>
     </div>
   )
 }

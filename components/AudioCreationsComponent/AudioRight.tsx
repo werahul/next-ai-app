@@ -1,16 +1,17 @@
 "use client"
 
 import React, { useState } from 'react'
-import Image from 'next/image';
 import GridCard from './GridCard';
 import Pagination from './Pagination';
 
-const AudioRight = () => {
+const AudioRight = ({audio, music} : any) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedOption, setSelectedOption] = useState('voice');
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 4; // Number of cards per page
     const [showVoiceContent, setShowVoiceContent] = useState(true); // Control visibility
+    const [showSelectVoice, setShowSelectVoice] = useState(false); // Control visibility
+    const [showVoiceBox, setShowVoiceBox] = useState(false);
 
 
     // Calculate the range of cards to display on the current page
@@ -28,17 +29,22 @@ const AudioRight = () => {
         setSelectedFile(file);
     };
 
-    const handleOptionClick = (option :any) => {
+    const handleOptionClick = (option: any) => {
         setSelectedOption(option);
         if (option === 'voice') {
-          setShowVoiceContent(true); // Show the content for "Voice" tab
-        } else {
-          setShowVoiceContent(false); // Hide the content for other tabs
+            setShowVoiceContent(true);
+            setShowSelectVoice(false) // Show the content for "Voice" tab
         }
-      };
+        else if (option === 'selectVoice') {
+            setShowSelectVoice(true)
+            setShowVoiceContent(false);
+
+        }
+
+    };
 
 
-// Cards Values---------------------------------------------- Array of Cards
+    // Cards Values---------------------------------------------- Array of Cards
 
     const gridCardsData = [
         {
@@ -640,6 +646,20 @@ const AudioRight = () => {
                             />
                         </>
                     )}
+
+                    {showSelectVoice && (
+                        <>
+                            {(audio || music) && (
+                            <div className="grid grid-cols-2 grid-rows-2 gap-x-9 gap-y-[22px] mt-[29px]">
+                                <div className="">
+                                    <img src="selectedVoice.png" alt="SelectVoice" />
+                                </div>
+                            </div>
+                            )}
+
+                        </>
+                    )}
+
 
 
 
