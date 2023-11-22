@@ -440,7 +440,7 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div className="mx-auto flex flex-col rounded-[8px] pt-8 items-center h-[204px] w-[250px]  z-10 bg-transparent">
                     {selectedImage ? (
-                        <img src={URL.createObjectURL(selectedImage)} alt="Uploaded Image" className='overflow-hidden object-contain w-[215px]  rounded-lg' />
+                        <img src={URL.createObjectURL(selectedImage)} alt="Uploaded Image" className='overflow-hidden object-contain w-[215px] aspect-video rounded-lg' />
                     ) : (
                         <div className="mx-auto flex flex-col rounded-[8px] pt-6     items-center h-[204px] w-[250px]  z-10 bg-transparent">
                             <input type="file" accept={selectedOption === "image" ? "image/*" : ""} id="file-input2" onChange={handleImageFileChange} onClick={()=> {

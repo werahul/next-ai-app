@@ -242,7 +242,7 @@ const Timeline = ({ videoDuration, audio, music }: any) => {
           {audio && (
             // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
             <div className="">
-              <audio ref={audioRef} controls>
+              <audio ref={audioRef} controls hidden>
                 <source src={URL.createObjectURL(audio)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
@@ -252,7 +252,7 @@ const Timeline = ({ videoDuration, audio, music }: any) => {
           {music && (
             // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
             <div className="">
-              <audio ref={audioRef} controls>
+              <audio ref={audioRef} controls hidden>
                 <source src={URL.createObjectURL(music)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
