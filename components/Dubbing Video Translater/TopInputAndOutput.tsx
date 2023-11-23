@@ -13,11 +13,11 @@ const TopInputAndOutput = () => {
             </div>
             <div className='flex justify-between gap-x-8 px-[200px] py-0 mb-4'>
                 <div className="flex flex-col justify-center items-center">
-                    <Image src="/DubbDown.svg" alt='Transcribe' width={110} height={110} />
+                    <Image src="/DubbDown.svg" alt='Transcribe' width={110} height={110} className='cursor-pointer'/>
                     <p className="text-black text-2xl font-semibold font-['Inter'] tracking-[2.52px] mt-8">Transcribe</p>
                 </div>
                 <div className="flex flex-col justify-center items-center -mt-20">
-                    <Image src="/DubbTop.svg" alt='Dub' width={110} height={110} />
+                    <Image src="/DubbTop.svg" alt='Dub' width={110} height={110} className='cursor-pointer'/>
                     <p className="text-black text-2xl font-semibold font-['Inter'] tracking-[2.52px] mt-8">Dub</p>
                 </div>
             </div>
@@ -34,7 +34,7 @@ const TopInputAndOutput = () => {
                 />
                 <div className="-mt-[66px] flex flex-col items-center justify-center">
                     <DropdownTranslate />
-                    <Image src="/DubbRight.svg" alt='Translate' width={100} height={80} />
+                    <Image src="/DubbRight.svg" alt='Translate' width={100} height={80} className='cursor-pointer' />
                     <div className="text-black text-2xl font-semibold font-['Inter'] mt-4 tracking-[2.52px]">Translate</div>
                 </div>
                 <textarea

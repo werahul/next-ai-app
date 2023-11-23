@@ -443,10 +443,10 @@ const AudioLeft = (props: AudioLeftProps) => {
                         <img src={URL.createObjectURL(selectedImage)} alt="Uploaded Image" className='overflow-hidden object-contain w-[215px] aspect-video rounded-lg' />
                     ) : (
                         <div className="mx-auto flex flex-col rounded-[8px] pt-6     items-center h-[204px] w-[250px]  z-10 bg-transparent">
-                            <input type="file" accept={selectedOption === "image" ? "image/*" : ""} id="file-input2" onChange={handleImageFileChange} onClick={()=> {
-                            setSelectedAudio(null)
-                            setSelectedMusic(null)
-                        }}/>
+                            <input type="file" accept={selectedOption === "image" ? "image/*" : ""} id="file-input2" onChange={handleImageFileChange} onClick={() => {
+                                setSelectedAudio(null)
+                                setSelectedMusic(null)
+                            }} />
                             <label htmlFor="file-input2" className="cursor-pointer">
                                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                                 <p className="text-[#737477] text-[14px] pt-[5px]">
@@ -467,10 +467,10 @@ const AudioLeft = (props: AudioLeftProps) => {
                         <img src="waveAudio.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
                     ) : (
                         <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
-                            <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} onClick={()=> {
-                            setSelectedImage(null)
-                            setSelectedAudio(null)
-                        }}/>
+                            <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} onClick={() => {
+                                setSelectedImage(null)
+                                setSelectedAudio(null)
+                            }} />
                             <label htmlFor="file-input2" className="cursor-pointer">
                                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                                 <p className="text-[#737477] text-[14px] pt-[5px]">Upload Music</p>
@@ -488,10 +488,10 @@ const AudioLeft = (props: AudioLeftProps) => {
                     {selectedAudio ? (
                         <img src="waveAudio.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
                     ) : (<div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">
-                        <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleAudioFileChange} onClick={()=> {
+                        <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleAudioFileChange} onClick={() => {
                             setSelectedImage(null)
                             setSelectedMusic(null)
-                        }}/>
+                        }} />
                         <label htmlFor="file-input2" className="cursor-pointer">
                             <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                             <p className="text-[#737477] text-[14px] pt-[5px]">
