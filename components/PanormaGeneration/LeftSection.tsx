@@ -8,7 +8,8 @@ const LeftSection = () => {
     const [width, setWidth] = useState(0)
     const [cfgScale, setCfgScale] = useState(0)
     const [sampling, setSampling] = useState(0)
-    const [indexRatio, setIndexRatio] = useState(0)
+    const [NumberOfImages, setNumberOfImages] = useState(0)
+
 
 
     const decreaseHeight = () => {
@@ -35,8 +36,19 @@ const LeftSection = () => {
         setSampling((prevSampling) => Math.max(0, prevSampling - 1));
     };
     const increaseSampling = () => {
-        setSampling((prevSampling) => Math.min(30, prevSampling + 1));
+        setSampling((prevSampling) => Math.min(50, prevSampling + 1));
     };
+    const decreaseNumberOfImages = () => {
+        setNumberOfImages((prevNumberOfImages) => Math.max(0, prevNumberOfImages - 1));
+    };
+    const increaseNumberOfImages = () => {
+        setNumberOfImages((prevNumberOfImages) => Math.min(10, prevNumberOfImages + 1));
+    };
+
+
+
+
+
 
     const handleHeightChange = (e: any) => {
         const value = parseInt(e.target.value, 10);
@@ -97,7 +109,7 @@ const LeftSection = () => {
 
         if (value >= 0 && value <= 50) {
             setSampling(value);
-            updateCurrentCfgScale(value);
+            // updateCurrentCfgScale(value);
 
             // Calculate the left position based on the value (assuming a linear mapping from 0 to 50 to a width)
             const left = `calc(${((value / 50) * 100)}% - 10px)`;
@@ -108,6 +120,23 @@ const LeftSection = () => {
             }
         }
     };
+    const handleNumberOfImagesChange = (e: any) => {
+        const value = parseInt(e.target.value, 10);
+
+        if (value >= 0 && value <= 10) {
+            setNumberOfImages(value);
+            // updateCurrentCfgScale(value);
+
+            // Calculate the left position based on the value (assuming a linear mapping from 0 to 10 to a width)
+            const left = `calc(${((value / 10) * 100)}% - 10px)`;
+            const currentExposureElement = document.querySelector('.numberOfImages-class');
+
+            if (currentExposureElement instanceof HTMLElement) {
+                currentExposureElement.style.left = left;
+            }
+        }
+    };
+
 
 
     const updateCurrentCfgScale = (newCfgScale: any) => {
@@ -141,13 +170,22 @@ const LeftSection = () => {
         const background = `linear-gradient(to right, #73F89D 0%, #48A0F9 ${clampedPercentage}%, #fff ${clampedPercentage}%)`;
         return background;
     };
+    const calculateBackgroundForNumberOfImages = (value: any) => {
+        const minRange = 0;
+        const maxRange = 10;
+        const percentage = ((value - minRange) / (maxRange - minRange)) * 100;
+        const clampedPercentage = Math.min(100, Math.max(0, percentage));
+        const background = `linear-gradient(to right, #73F89D 0%, #48A0F9 ${clampedPercentage}%, #fff ${clampedPercentage}%)`;
+        return background;
+    };
+
 
 
 
 
     return (
         <div>
-            <div className="w-[22%] h-[790px] bg-white rounded-[10px] dropShadow p-5" >
+            <div className="w-[290px] h-auto bg-white rounded-[10px] dropShadow p-5" >
 
                 <div className="">
                     <div className="text-zinc-900 text-base font-semibold font-['Inter'] mb-1">Positive Prompt</div>
@@ -267,7 +305,7 @@ const LeftSection = () => {
                         <div className="w-full relative">
                             <input
                                 type="range"
-                                id="AudioLengthRatio"
+                                id="cfgScale"
                                 min="0"
                                 max="30"
                                 value={cfgScale}
@@ -305,7 +343,7 @@ const LeftSection = () => {
                         <div className="w-full relative">
                             <input
                                 type="range"
-                                id="AudioLengthRatio"
+                                id="sampling"
                                 min="0"
                                 max="50"
                                 value={sampling}
@@ -328,6 +366,66 @@ const LeftSection = () => {
                             </button>
                         </div>
                     </div>
+                </div>
+                <div className="range-container">
+                    <label htmlFor="numberOfImages" className="font-[500] text-[12px] mb-2 font-['Inter']">
+                        No.of Images
+                    </label>
+                    <div className="flex items-center space-x-3">
+
+                        <div className="flex flex-col items-center justify-center -mt-1">
+                            <p className="text-[9px] font-semibold">0</p>
+                            <button onClick={(e) => { e.preventDefault(); decreaseNumberOfImages(); }} className="font-bold text-[20px] -mt-3">
+                                -
+                            </button>
+                        </div>
+                        <div className="w-full relative">
+                            <input
+                                type="range"
+                                id="numberOfImages"
+                                min="0"
+                                max="10"
+                                value={NumberOfImages}
+                                onChange={handleNumberOfImagesChange}
+                                style={{ background: calculateBackgroundForNumberOfImages(NumberOfImages) }}
+                            />
+                            <span
+                                className="absolute text-[10px] font-[600] top-[-8px]"
+                                style={{ left: `calc(${((NumberOfImages / 10) * 100)}% - 1px)` }}
+                            >
+                                {NumberOfImages}
+                            </span>
+
+
+                        </div>
+
+                        <div className="flex flex-col items-center justify-center -mt-1">
+                            <p className="text-[9px] font-semibold">10</p>
+                            <button onClick={(e) => { e.preventDefault(); increaseNumberOfImages(); }} className="font-bold text-[20px] -mt-3">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="flex justify-between items-center">
+                    <div className="text-black text-[10px] font-semibold font-['Inter']">Seed</div>
+                    <input type="text" value={-1} className='text-[9px] w-[38.20px] h-3.5 bg-white rounded-sm shadow border outline-none border-stone-300 p-1 px-3' />
+                </div>
+                <div className="flex justify-between items-center  mt-3">
+                    <button className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Reset</button>
+
+                    <button className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Save</button>
+                </div>
+
+                <div className="px-0 pt-0 mt-6 mb-3 z-10">
+                    <button
+                        type="button"
+                        className="buttonBg w-full h-[50px] rounded-[8px] text-[14px] text-white font-bold"
+                    >
+                        Generate
+                    </button>
                 </div>
             </div>
 
