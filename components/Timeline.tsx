@@ -246,7 +246,7 @@ const Timeline = ({ videoDuration, audio, music }: any) => {
                 <source src={URL.createObjectURL(audio)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
-              <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+              <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
             </div>
           )}
           {music && (
@@ -256,7 +256,7 @@ const Timeline = ({ videoDuration, audio, music }: any) => {
                 <source src={URL.createObjectURL(music)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
-              <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+              <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
             </div>
           )}
 

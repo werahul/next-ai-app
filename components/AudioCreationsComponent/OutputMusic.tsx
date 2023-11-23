@@ -27,7 +27,7 @@ const OutputMusic = ({ video, image, music, audio, text }: any) => {
           <source src={URL.createObjectURL(music || audio)} type="audio/mp3" />
           Your browser does not support the audio tag.
         </audio> */}
-        <img src="waveAudio.png" alt="AudioWave" />
+        <img src="waveAudio2.png" alt="AudioWave" />
       </div>
     );
   } else if (text) {

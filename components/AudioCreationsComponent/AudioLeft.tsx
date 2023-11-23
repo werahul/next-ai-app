@@ -464,7 +464,7 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div>
                     {selectedMusic ? (
-                        <img src="waveAudio.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
+                        <img src="waveAudio2.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
                     ) : (
                         <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
                             <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} onClick={() => {
@@ -486,7 +486,7 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div className="">
                     {selectedAudio ? (
-                        <img src="waveAudio.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
+                        <img src="waveAudio2.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
                     ) : (<div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">
                         <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleAudioFileChange} onClick={() => {
                             setSelectedImage(null)
