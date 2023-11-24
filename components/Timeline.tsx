@@ -49,7 +49,7 @@ function updateAudioBars() {
 
 
 const Timeline = ({ videoDuration, audio, music }: any) => {
-  console.log('Audio prop:', audio);
+  // console.log('Audio prop:', audio);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0 });
   const [isDoubleClicked, setIsDoubleClicked] = useState(false);
