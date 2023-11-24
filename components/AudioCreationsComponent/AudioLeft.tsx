@@ -562,7 +562,7 @@ const AudioLeft = (props: AudioLeftProps) => {
                 <div className="mt-4">
                     <div className="range-container ">
                         <label htmlFor="transpose" className='font-[500] text-[12px] mb-2'>Transpose</label>
-                        <div className='flex items-center space-x-2 -ml-1'>
+                        <div className='flex items-center space-x-2 -ml-[6px]'>
                             <div className="flex flex-col items-center justify-center -mt-1">
                                 <p className="text-[12px] font-semibold">-12</p>
                                 <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px] -mt-3">
@@ -689,7 +689,7 @@ const AudioLeft = (props: AudioLeftProps) => {
                 <div className="mt-4">
                     <div className="range-container ">
                         <label htmlFor="transpose" className='font-[500] text-[12px] mb-2'>Transpose</label>
-                        <div className='flex items-center space-x-2 -ml-1'>
+                        <div className='flex items-center space-x-2 -ml-[6px]'>
                             <div className="flex flex-col items-center justify-center -mt-1">
                                 <p className="text-[12px] font-semibold">-12</p>
                                 <button onClick={(e) => { e.preventDefault(); decreaseTranspose(); }} className="font-bold text-[20px] -mt-3">
