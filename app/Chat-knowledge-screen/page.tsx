@@ -2,6 +2,7 @@
 
 import Options from '@/components/ChatKnowledgeScreen/Options';
 import AddNew from '@/components/ChatKnowledgeScreen/AddNew';
+import PopUpDropdown from '@/components/ChatKnowledgeScreen/PopUpDropdown';
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 
@@ -10,6 +11,7 @@ const Page = () => {
   const [activeTab, setActiveTab] = useState('My Creation');
   const [clickedPage, setClickedPage] = useState(1);
   const [showOptions, setShowOptions] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   const totalPages = 20;
 
   const handlePageChange = (page: any) => {
@@ -37,9 +39,18 @@ const Page = () => {
 
   const optionsClick = (itemId: any) => {
     setShowOptions(itemId)
+    setShowPopup(false)
+
   }
   const closeOptions = () => {
     setShowOptions(null)
+
+  }
+  const openPopUp = () => {
+    setShowPopup(true)
+  }
+  const onClosePopUp = () => {
+    setShowPopup(false)
   }
 
   useEffect(() => {
@@ -71,6 +82,8 @@ const Page = () => {
 
     // ...
   ];
+
+
 
   return (
     <div className='max-container flexTwo padding-container3 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10'>
@@ -153,12 +166,40 @@ const Page = () => {
                     <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
 
                   </div>
-                  <p className='font-semibold flex justify-center items-center mb-2 text-white'>{item.name}</p>
+                  <p className='font-semibold flex justify-center items-center mb-2 text-white cursor-pointer' onClick={openPopUp}>{item.name}</p>
                 </div>
                 <p className='font-semibold flex justify-center items-center mt-2 text-white'>{item.type}</p>
               </div>
             ))}
+            {showPopup && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                <div className="bg-white w-[569px] h-[261px] popup-content">
+                  <div className="p-5 space-y-3">
+                    <div className="flex space-x-2">
+                      <label htmlFor="voiceName" className="whitespace-nowrap">Name:</label>
+                      <input type="text" id="voiceName" className="w-full mb-3 outline-none px-2 border rounded-[5px]" />
+                    </div>
+                    <div className="flex space-x-2">
+                      <label htmlFor="voiceName" className="whitespace-nowrap">Choose Default  Model :</label>
+                      <PopUpDropdown/>
+                    </div>
+                    <div className="flex justify-start items-center">
+                      <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image :</label>
+                      <input type="file" id="uploadFile" accept=".wav, .zip" className="w-full mb-3 border p-2 rounded-[5px]" />
+                    </div>
+                    <button
+                      type="submit"
+                      className="buttonBg w-[100%] h-[50px]  rounded-[8px] text-[14px] text-white font-bold"
+                      onClick={onClosePopUp}
+                    >
+                      Submit
+                    </button>
+                  </div>
 
+                </div>
+
+              </div>
+            )}
           </div>
         )}
         {activeTab === 'My Saved' && (

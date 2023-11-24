@@ -435,3 +435,18 @@ input[type="range"] {
   padding: 0 18px;
 
 }
+.popUpSelect {
+  background-image: url("/DubbDrop.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  /* background-position: 34.5rem; */
+  background-position: right 10px center;
+
+  padding: 0 18px;
+
+}
+.noShodow{
+  box-shadow: none;
+  text-shadow: none;
+  filter: none;
+}

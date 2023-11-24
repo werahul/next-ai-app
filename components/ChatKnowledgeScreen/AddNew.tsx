@@ -131,97 +131,43 @@ const AddNew = () => {
 
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white w-[569px] h-[574px] rounded-[10px] popup-content">
-            <div className="p-5 space-y-6">
-              <div className="flex space-x-3">
-                <label htmlFor="voiceName" className="whitespace-nowrap">Voice Name:</label>
+          <div className="bg-white w-[569px] h-[490px] popup-content">
+            <div className="p-5 space-y-3">
+              <div className="flex space-x-2">
+                <label htmlFor="voiceName" className="whitespace-nowrap">Name:</label>
                 <input type="text" id="voiceName" className="w-full mb-3 outline-none px-2 border rounded-[5px]" />
               </div>
-              <div className="flex items-center mb-3">
-                <label htmlFor="customCheckboxPopup" className="cursor-pointer">Public Figure:</label>
-                <input
-                  type="checkbox"
-                  id="customCheckboxPopup"
-                  checked={isChecked}
-                  onChange={() => setIsChecked(!isChecked)
 
-                  }
-                  className="appearance-none border rounded w-8 h-6 ml-2 cursor-pointer"
-                />
+              <div className="text-black text-lg font-normal font-['Inter']">Upload Pdf, Doc, Csv, Folder.</div>
+              <div className="flex items-center mb-3">
 
               </div>
 
               <div className="flex">
-                <label htmlFor="uploadFile">Upload a Wav file or a zip of wav files:</label>
+                {/* <label htmlFor="uploadFile">Upload a Wav file or a zip of wav files:</label> */}
+                <input type="file" id="uploadFile" accept=".wav, .zip" className="w-full mb-3 border p-2 rounded-[5px]" />
+              </div>
+
+              <div className="flex space-x-3">
+                <label htmlFor="youtubeLink" className="whitespace-nowrap">Youtube Link :</label>
+                <input type="text" id="youtubeLink" className="w-full mb-3 outline-none px-2 border rounded-[5px]" placeholder="Upload link"/>
+              </div>
+              <div className="flex space-x-3">
+                <label htmlFor="urlLink" className="whitespace-nowrap">URL Link :</label>
+                <input type="text" id="urlLink" className="w-full mb-3 outline-none px-2 border rounded-[5px]" placeholder="Upload link" />
+              </div>
+
+              <div><span className="text-black text-[10px] font-bold font-['Inter']">Note:</span><span className="text-black text-[10px] font-normal font-['Inter']"> For more than one link, separate with a ;</span></div>
+
+              <div className="flex justify-start items-center">
+                <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image :</label>
                 <input type="file" id="uploadFile" accept=".wav, .zip" className="w-full mb-3 border p-2 rounded-[5px]" />
               </div>
 
               <div>
-                <h4>Two Settings For Training Which are :</h4>
-                <div className="range-container2">
-                  <label htmlFor="tint" className='font-[500] text-[12px] mt-3 mb-2'>Total Epoch</label>
-                  <div className='flex items-center space-x-3'>
-                    <button onClick={decreaseEpoch} className='font-bold flex flex-col items-center text-[20px]'>
-                      <span className='text-[10px]'>0</span>
-                      <span className='-mt-3'>-</span>
-                    </button>
-
-                    <div className='w-full relative'>
-                      <input
-                        type="range"
-                        id='epoch'
-                        min="0"
-                        max="1000"
-                        value={epoch}
-                        className="w-full"
-                        onChange={handleEpochChange}
-                        //   onInput={updateImageStyles}
-                        style={{ background: calculateBackground(epoch) }}
-                      />
-                      <span className="current-epoch absolute text-[10px] font-[600] top-[-10px]" style={{ left: `calc(${(epoch - 10) / 10}% - 1px )` }}>
-                        {epoch}
-                      </span>
-
-
-                    </div>
-                    <button onClick={increaseEpoch} className='font-bold text-[20px] flex flex-col items-center'><span className='text-[10px]'>1000</span>
-                      <span className='-mt-3'>+</span></button>
-                  </div>
-                </div>
-                <div className="range-container2">
-                  <label htmlFor="tint" className='font-[500] text-[12px] mt-3 mb-2'>Batch Size</label>
-                  <div className='flex items-center space-x-3'>
-                    <button onClick={decreaseBatch} className='font-bold flex flex-col items-center text-[20px]'>
-                      <span className='text-[10px]'>0</span>
-                      <span className='-mt-3'>-</span>
-                    </button>
-
-                    <div className='w-full relative'>
-                      <input
-                        type="range"
-                        id='batch'
-                        min="0"
-                        max="40"
-                        value={batch}
-                        onChange={handleBatchChange}
-                        style={{ background: calculateBackground2(batch) }}
-                        className="w-full"
-                      />
-                      <span className="current-batch absolute text-[10px] font-[600] top-[-10px]" style={{ left: `calc(${(batch * 2.45)}% - 0px )` }}>
-                        {batch}
-                      </span>
-
-
-                    </div>
-                    <button onClick={increaseBatch} className='font-bold text-[20px] flex flex-col items-center'><span className='text-[10px]'>40</span>
-                      <span className='-mt-3'>+</span></button>
-                  </div>
-                </div>
+               
+                
               </div>
-            </div>
-            <div className="flex p-5 items-center space-x-3 ">
-              <label htmlFor="uploadFile" className="whitespace-nowrap">Upload Image:</label>
-              <input type="file" id="uploadFile" accept="image/*" className="w-full mb-3 border p-2 rounded-[5px]" />
             </div>
             <button
               type="submit"
