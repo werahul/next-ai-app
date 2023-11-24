@@ -22,12 +22,12 @@ const OutputMusic = ({ video, image, music, audio, text }: any) => {
     );
   } else if (music || audio) {
     return (
-      <div className="">
+      <div className=" w-[120%] overflow-hidden">
         {/* <audio controls>
           <source src={URL.createObjectURL(music || audio)} type="audio/mp3" />
           Your browser does not support the audio tag.
         </audio> */}
-        <img src="waveAudio2.png" alt="AudioWave" />
+        <img src="waveAudio2.png" alt="AudioWave" className='w-full' />
       </div>
     );
   } else if (text) {

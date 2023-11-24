@@ -464,7 +464,9 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div>
                     {selectedMusic ? (
-                        <img src="waveAudio2.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
+                        <div className="w-[92%] h-[120px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
+                            <img src="waveAudio4.png" alt="Wave Length" className="w-full my-auto" />
+                        </div>
                     ) : (
                         <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
                             <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} onClick={() => {
@@ -486,7 +488,9 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div className="">
                     {selectedAudio ? (
-                        <img src="waveAudio2.png" alt="Wave Length" className="w-[90%] pt-10 h-auto object-contain" />
+                        <div className="w-[92%] h-[130px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
+                            <img src="waveAudio4.png" alt="Wave Length" className="w-full my-auto" />
+                        </div>
                     ) : (<div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">
                         <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleAudioFileChange} onClick={() => {
                             setSelectedImage(null)
@@ -510,7 +514,7 @@ const AudioLeft = (props: AudioLeftProps) => {
             {/*<h4 className="px-5 pt-[15px] pb-[11px] text-[16px] font-bold">Options</h4>*/}
             <section className="bg-[#FAFAFA] w-[250px] h-[250px] border  rounded-[10px] z-10 boxShadow">
                 <div>
-                    <div className="px-[11px] pt-[5px]">
+                    <div className="px-[11px] pt-[5px] z-20">
                         <div className="mx-auto border flex space-x-0 px-2 rounded-[8px] justify-between items-center bg-[#FAFAFA] boxShadow z-50">
                             <p
                                 className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] font-medium px-3 ${selectedOption === "text" ? "bg-[#2B303A] text-white" : "text-black"

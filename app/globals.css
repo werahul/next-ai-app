@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -423,7 +425,7 @@ input[type="range"] {
 
 /* Dubbing Styling */
 
-.dubbingSelect{
+.dubbingSelect {
   background-image: url("/DubbDrop.svg");
   background-size: 20px;
   background-repeat: no-repeat;
@@ -433,4 +435,3 @@ input[type="range"] {
   padding: 0 18px;
 
 }
-

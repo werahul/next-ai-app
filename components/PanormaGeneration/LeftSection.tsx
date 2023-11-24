@@ -9,6 +9,27 @@ const LeftSection = () => {
     const [cfgScale, setCfgScale] = useState(0)
     const [sampling, setSampling] = useState(0)
     const [NumberOfImages, setNumberOfImages] = useState(0)
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (e: any) => {
+        const newValue = e.target.value;
+        const sanitizedValue = newValue.replace(/[^0-9-]/g, '');
+        const intValue = sanitizedValue.startsWith('-')
+            ? parseInt(sanitizedValue, 10)
+            : parseInt(sanitizedValue.replace(/-/g, ''), 10);
+        if (newValue === '' || newValue === '-' || (!isNaN(intValue) && intValue >= -100 && intValue <= 100)) {
+            setInputValue(sanitizedValue);
+        }
+
+    };
+
+    const resetAll = () =>{
+        setHeight(0)
+        setWidth(0)
+        setCfgScale(0)
+        setSampling(0)
+        setNumberOfImages(0)
+    }
 
 
 
@@ -207,6 +228,7 @@ const LeftSection = () => {
 
                 <div className="flex justify-between items-center mt-4">
                     <div className="text-zinc-900 text-base font-semibold font-['Inter']">Options</div>
+                    <div className="text-black text-[10px] font-semibold font-['Inter'] cursor-pointer">(?)</div>
                 </div>
 
                 {/* Range Section ------------------------------------------------------------------------------------------------------>>>>> */}
@@ -411,10 +433,16 @@ const LeftSection = () => {
 
                 <div className="flex justify-between items-center">
                     <div className="text-black text-[10px] font-semibold font-['Inter']">Seed</div>
-                    <input type="text" value={-1} className='text-[9px] w-[38.20px] h-3.5 bg-white rounded-sm shadow border outline-none border-stone-300 p-1 px-3' />
+                    <input
+                        type="text"
+                        placeholder='-1'
+                        className='placeholder-black text-[9px] w-[38.20px] h-3.5 bg-white rounded-sm shadow border outline-none border-stone-300 p-1 px-2'
+                        value={inputValue}
+                        onChange={handleInputChange}
+                    />
                 </div>
                 <div className="flex justify-between items-center  mt-3">
-                    <button className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Reset</button>
+                    <button onClick={resetAll} className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Reset</button>
 
                     <button className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Save</button>
                 </div>
