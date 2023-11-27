@@ -14,7 +14,7 @@ const Page = () => {
     const [age, setAge] = useState(0)
     const [rating, setRating] = useState(50)
     const [activePerson, setActivePerson] = useState(null);
-    const totalPages = 20;
+    const totalPages = 10;
 
 
     const handlePersonClick = (id: any) => {
@@ -726,55 +726,61 @@ const Page = () => {
                         )}
                     </div>
                 )}
-                <div className='pagination flex justify-around mt-10'>
-                    <button className='pagination-button' onClick={handleLeftArrowClick}>
-                        <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
-                    </button>
-                    {startPage > 1 && (
-                        <>
-                            <button
-                                className={`pagination-button ${startPage === 1 ? 'active buttonBg' : ''
-                                    }`}
-                                onClick={() => handlePageChange(1)}
-                            >
-                                1
-                            </button>
-                            {startPage > 2 && (
-                                <span className="pagination-ellipsis my-auto">...</span>
-                            )}
-                        </>
-                    )}
-                    {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
-                        const page = startPage + index;
-                        return page > 0 && page <= totalPages ? (
-                            <button
-                                key={page}
-                                className={`pagination-button ${page === clickedPage ? 'active buttonBg' : ''
-                                    }`}
-                                onClick={() => handlePageChange(page)}
-                            >
-                                {page}
-                            </button>
-                        ) : null;
-                    })}
-                    {endPage < totalPages && (
-                        <>
-                            {endPage < totalPages - 1 && (
-                                <span className="pagination-ellipsis my-auto">...</span>
-                            )}
-                            <button
-                                className={`pagination-button ${endPage === totalPages ? 'active paginationBG' : ''
-                                    }`}
-                                onClick={() => handlePageChange(totalPages)}
-                            >
-                                {totalPages}
-                            </button>
-                        </>
-                    )}
-                    <button className='pagination-button' onClick={handleRightArrowClick}>
-                        <Image src="/rightSideArrow.svg" alt='right' width={12} height={20} />
-                    </button>
-                </div>
+
+
+<div className='pagination flex justify-center space-x-[55px] mt-10'>
+    <button className='pagination-button' onClick={handleLeftArrowClick}>
+        <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
+    </button>
+    {startPage > 1 && (
+        <>
+            <button
+                className={`pagination-button ${startPage === 1 ? 'active buttonBg text-white' : ''
+                    }`}
+                onClick={() => handlePageChange(1)}
+            >
+                1
+            </button>
+            {startPage > 2 && (
+                <span className="pagination-ellipsis my-auto">...</span>
+            )}
+        </>
+    )}
+    {Array.from({ length: Math.min(5, endPage - startPage + 1) }, (_, index) => {
+        const page = startPage + index;
+        return (
+            <button
+                key={page}
+                className={`pagination-button ${page === clickedPage ? 'active buttonBg text-white' : ''
+                    }`}
+                onClick={() => handlePageChange(page)}
+            >
+                {page}
+            </button>
+        );
+    })}
+    {endPage < totalPages && (
+        <>
+            {endPage < totalPages - 1 && (
+                <span className="pagination-ellipsis my-auto">...</span>
+            )}
+            <button
+                className={`pagination-button ${endPage === totalPages ? 'active paginationBG' : ''
+                    }`}
+                onClick={() => handlePageChange(totalPages)}
+            >
+                {totalPages}
+            </button>
+        </>
+    )}
+    <button className='pagination-button' onClick={handleRightArrowClick}>
+        <Image src="/rightSideArrow.svg" alt='right' width={12} height={20} />
+    </button>
+   
+</div>
+
+
+                
             </div>
         </div>
     );
