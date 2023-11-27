@@ -148,10 +148,23 @@ const Page = () => {
         // ...
     ];
 
+    useEffect(() => {
+        const handleOutsideClick = (event: any) => {
+            if (showPopup && !event.target.closest(".popup-content")) {
+                onClosePopUp();
+            }
+        };
+
+        document.addEventListener("click", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        };
+    }, [showPopup]);
 
 
     return (
-        <div className='max-container flexTwo padding-container3 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10'>
+        <div className='max-container flexTwo padding-container3 gap-10 pt-10 pb-[12px] md:gap-10 lg:pt-10'>
             <div>
                 <AddNewPersona />
             </div>
@@ -195,7 +208,7 @@ const Page = () => {
 
                 {/* Content for each tab based on currentPage */}
                 {activeTab === 'My Creation' && (
-                    <div className='grid grid-cols-5 gap-x-[25px] gap-y-[40px] mt-5'>
+                    <div className='grid grid-cols-5 gap-x-[25px] gap-y-[25px] mt-5'>
 
 
 
@@ -370,7 +383,7 @@ const Page = () => {
                     </div>
                 )}
                 {activeTab === 'My Saved' && (
-                    <div className='grid grid-cols-5 gap-x-[25px] gap-y-[40px] mt-5'>
+                    <div className='grid grid-cols-5 gap-x-[25px] gap-y-[25px] mt-5'>
                         {items.map((item) => (
                             <div key={item.id} className={`w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD] ${activePerson === item.id ? 'bg-gradient-to-l  from-[#4CA9F0] to-[#70F2A4]' : ''
                                 }`} onClick={() => handlePersonClick(item.id)}>
@@ -416,7 +429,7 @@ const Page = () => {
                                 <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
                             </div>
                         ))}
-                          {showPopup && (
+                        {showPopup && (
                             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center font-semibold">
                                 <div className="bg-white w-[472px] h-auto popup-content">
                                     <div className="p-5 space-y-3">
@@ -542,7 +555,7 @@ const Page = () => {
                     </div>
                 )}
                 {activeTab === 'Public' && (
-                    <div className='grid grid-cols-5 gap-x-[25px] gap-y-[40px] mt-5'>
+                    <div className='grid grid-cols-5 gap-x-[25px] gap-y-[25px] mt-5'>
                         {items.map((item) => (
                             <div key={item.id} className={`w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD] ${activePerson === item.id ? 'bg-gradient-to-l  from-[#4CA9F0] to-[#70F2A4]' : ''
                                 }`} onClick={() => handlePersonClick(item.id)}>
@@ -588,7 +601,7 @@ const Page = () => {
                                 <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
                             </div>
                         ))}
-                          {showPopup && (
+                        {showPopup && (
                             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center font-semibold">
                                 <div className="bg-white w-[472px] h-auto popup-content">
                                     <div className="p-5 space-y-3">
