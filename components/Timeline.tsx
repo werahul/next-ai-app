@@ -241,24 +241,24 @@ const Timeline = ({ videoDuration, audio, music }: any) => {
           <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer xxl:w-[20px]' />
           {audio && (
             // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
-            <div className="">
+            <div className="border-y border-x-4 rounded-lg border-black m-1 cursor-ew-resize">
               <audio ref={audioRef} controls hidden>
                 <source src={URL.createObjectURL(audio)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
-              <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+              <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] ' />
             </div>
           )}
-          {music && (
+          {/* {music && (
             // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
-            <div className="">
-              <audio ref={audioRef} controls hidden>
-                <source src={URL.createObjectURL(music)} type="audio/mp3" />
-                Your browser does not support the audio tag.
-              </audio>
-              <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
-            </div>
-          )}
+            // <div className="border-y border-x-4 rounded-lg border-black m-1 cursor-ew-resize">
+            //   <audio ref={audioRef} controls hidden>
+            //     <source src={URL.createObjectURL(audio)} type="audio/mp3" />
+            //     Your browser does not support the audio tag.
+            //   </audio>
+            //   <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] ' />
+            // </div>
+          )} */}
 
 
         </div>

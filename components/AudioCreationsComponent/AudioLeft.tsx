@@ -462,23 +462,14 @@ const AudioLeft = (props: AudioLeftProps) => {
 
         else if (selectedOption === "music") {
             return (
-                <div>
-                    {selectedMusic ? (
-                        <div className="w-[92%] h-[120px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
-                            <img src="waveAudio4.png" alt="Wave Length" className="w-full my-auto" />
-                        </div>
-                    ) : (
-                        <div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px] z-10 bg-transparent">
-                            <input type="file" accept="audio/*" id="file-input2" onChange={handleMusicFileChange} onClick={() => {
-                                setSelectedImage(null)
-                                setSelectedAudio(null)
-                            }} />
-                            <label htmlFor="file-input2" className="cursor-pointer">
-                                <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
-                                <p className="text-[#737477] text-[14px] pt-[5px]">Upload Music</p>
-                            </label>
-                        </div>
-                    )}
+                <div className="flex flex-col">
+                    <input
+                        type="text"
+                        className="font-normal text-[14px] pt-14 px-5 outline-none text-[#737477] mt-[10px] mb-[12px] bg-transparent"
+                        placeholder="Type your text....."
+                        onChange={handleChange}
+                    />
+
                 </div>
             );
         }
@@ -488,8 +479,13 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div className="">
                     {selectedAudio ? (
-                        <div className="w-[92%] h-[130px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
+                        <div className="relative w-[92%] h-[130px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
                             <img src="waveAudio4.png" alt="Wave Length" className="w-full my-auto" />
+                            <div className=" absolute top-[35%]">
+                                <img src="playAudio.png" alt="Wave Length" className="w-10 my-auto cursor-pointer" />
+                            </div>
+
+
                         </div>
                     ) : (<div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">
                         <input type="file" accept={selectedOption === "audio" ? "audio/*" : ""} id="file-input2" onChange={handleAudioFileChange} onClick={() => {

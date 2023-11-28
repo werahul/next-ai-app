@@ -1,6 +1,6 @@
 "use client"
 
-import Options from '@/components/ChatKnowledgeScreen/Options';
+import RatingStars from '@/components/RatingStars';
 import AddNew from '@/components/ChatKnowledgeScreen/AddNew';
 import PopUpDropdown from '@/components/ChatKnowledgeScreen/PopUpDropdown';
 import Image from 'next/image'
@@ -69,12 +69,12 @@ const Page = () => {
   const items = [
     // Add your data objects here
     // Example:
-    { id: 1, name: 'Person 1', type: 'Chat' },
-    { id: 2, name: 'Person 2', type: 'Chat' },
-    { id: 3, name: 'Person 3', type: 'Chat' },
-    { id: 4, name: 'Person 4', type: 'Chat' },
-    { id: 5, name: 'Person 5', type: 'Chat' },
-    { id: 6, name: 'Person 6', type: 'Chat' },
+    { id: 1, name: 'Person 1', type: 'Chat', modelImg: "/model1.svg" },
+    { id: 2, name: 'Person 2', type: 'Chat', modelImg: "/model2.svg" },
+    { id: 3, name: 'Person 3', type: 'Chat', modelImg: "/model3.svg" },
+    { id: 4, name: 'Person 4', type: 'Chat', modelImg: "/model4.svg" },
+    { id: 5, name: 'Person 5', type: 'Chat', modelImg: "/model5.svg" },
+    { id: 6, name: 'Person 6', type: 'Chat', modelImg: "/model6.svg" },
     { id: 7, name: 'Person 7', type: 'Chat' },
     { id: 8, name: 'Person 8', type: 'Chat' },
     { id: 9, name: 'Person 9', type: 'Chat' },
@@ -123,9 +123,6 @@ const Page = () => {
         {/* Content for each tab based on currentPage */}
         {activeTab === 'My Creation' && (
           <div className='grid grid-cols-5 gap-x-[25px] gap-y-[40px] mt-5'>
-
-
-
             {items.map((item) => (
               <div key={item.id} className='w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD]'>
                 <div className='w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 flex'>
@@ -163,12 +160,16 @@ const Page = () => {
 
                       </div>
                     </div>
-                    <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                    <img src={item.modelImg} alt="" className='-mt-8' />
+                    <div className="mb-2">
+                      <RatingStars />
+                    </div>
+
 
                   </div>
-                  <p className='font-semibold flex justify-center items-center mb-2 text-white cursor-pointer' onClick={openPopUp}>{item.name}</p>
+                  <p className='font-semibold flex justify-center items-center mb-2 text-white '>{item.name}</p>
                 </div>
-                <p className='font-semibold flex justify-center items-center mt-2 text-white'>{item.type}</p>
+                <p className='font-semibold flex justify-center items-center mt-2 text-white cursor-pointer ' onClick={openPopUp}>{item.type}</p>
               </div>
             ))}
             {showPopup && (
@@ -181,11 +182,15 @@ const Page = () => {
                     </div>
                     <div className="flex space-x-2">
                       <label htmlFor="voiceName" className="whitespace-nowrap">Choose Default  Model :</label>
-                      <PopUpDropdown/>
+                      <PopUpDropdown />
                     </div>
                     <div className="flex justify-start items-center">
                       <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image :</label>
-                      <input type="file" id="uploadFile" accept=".wav, .zip" className="w-full mb-3 border p-2 rounded-[5px]" />
+                      <input
+                        type="file"
+                        id="uploadFile"
+                        accept=".jpeg, .jpg, .png, .gif, .bmp, .svg, image/jpeg, image/jpg, image/png, image/gif, image/bmp, image/svg+xml"
+                        className="w-full mb-3 border p-2 rounded-[5px]" />
                     </div>
                     <button
                       type="submit"
@@ -241,14 +246,51 @@ const Page = () => {
 
                       </div>
                     </div>
-                    <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                    <img src={item.modelImg} alt="" className='-mt-8' />
+                    <div className="mb-2">
+                      <RatingStars />
+                    </div>
+
 
                   </div>
-                  <p className='font-semibold flex justify-center items-center mb-2 text-white'>{item.name}</p>
+                  <p className='font-semibold flex justify-center items-center mb-2 text-white '>{item.name}</p>
                 </div>
-                <p className='font-semibold flex justify-center items-center mt-2 text-white'>{item.type}</p>
+                <p className='font-semibold flex justify-center items-center mt-2 text-white cursor-pointer ' onClick={openPopUp}>{item.type}</p>
               </div>
             ))}
+            {showPopup && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                <div className="bg-white w-[569px] h-[261px] popup-content">
+                  <div className="p-5 space-y-3">
+                    <div className="flex space-x-2">
+                      <label htmlFor="voiceName" className="whitespace-nowrap">Name:</label>
+                      <input type="text" id="voiceName" className="w-full mb-3 outline-none px-2 border rounded-[5px]" />
+                    </div>
+                    <div className="flex space-x-2">
+                      <label htmlFor="voiceName" className="whitespace-nowrap">Choose Default  Model :</label>
+                      <PopUpDropdown />
+                    </div>
+                    <div className="flex justify-start items-center">
+                      <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image :</label>
+                      <input
+                        type="file"
+                        id="uploadFile"
+                        accept=".jpeg, .jpg, .png, .gif, .bmp, .svg, image/jpeg, image/jpg, image/png, image/gif, image/bmp, image/svg+xml"
+                        className="w-full mb-3 border p-2 rounded-[5px]" />
+                    </div>
+                    <button
+                      type="submit"
+                      className="buttonBg w-[100%] h-[50px]  rounded-[8px] text-[14px] text-white font-bold"
+                      onClick={onClosePopUp}
+                    >
+                      Submit
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+            )}
           </div>
         )}
         {activeTab === 'Public' && (
@@ -290,24 +332,61 @@ const Page = () => {
 
                       </div>
                     </div>
-                    <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                    <img src={item.modelImg} alt="" className='-mt-8' />
+                    <div className="mb-2">
+                      <RatingStars />
+                    </div>
+
 
                   </div>
-                  <p className='font-semibold flex justify-center items-center mb-2 text-white'>{item.name}</p>
+                  <p className='font-semibold flex justify-center items-center mb-2 text-white '>{item.name}</p>
                 </div>
-                <p className='font-semibold flex justify-center items-center mt-2 text-white'>{item.type}</p>
+                <p className='font-semibold flex justify-center items-center mt-2 text-white cursor-pointer ' onClick={openPopUp}>{item.type}</p>
               </div>
             ))}
+            {showPopup && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                <div className="bg-white w-[569px] h-[261px] popup-content">
+                  <div className="p-5 space-y-3">
+                    <div className="flex space-x-2">
+                      <label htmlFor="voiceName" className="whitespace-nowrap">Name:</label>
+                      <input type="text" id="voiceName" className="w-full mb-3 outline-none px-2 border rounded-[5px]" />
+                    </div>
+                    <div className="flex space-x-2">
+                      <label htmlFor="voiceName" className="whitespace-nowrap">Choose Default  Model :</label>
+                      <PopUpDropdown />
+                    </div>
+                    <div className="flex justify-start items-center">
+                      <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image :</label>
+                      <input
+                        type="file"
+                        id="uploadFile"
+                        accept=".jpeg, .jpg, .png, .gif, .bmp, .svg, image/jpeg, image/jpg, image/png, image/gif, image/bmp, image/svg+xml"
+                        className="w-full mb-3 border p-2 rounded-[5px]" />
+                    </div>
+                    <button
+                      type="submit"
+                      className="buttonBg w-[100%] h-[50px]  rounded-[8px] text-[14px] text-white font-bold"
+                      onClick={onClosePopUp}
+                    >
+                      Submit
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+            )}
           </div>
         )}
-        <div className='pagination flex justify-around mt-10'>
+        <div className='pagination flex justify-center space-x-[55px] mt-10'>
           <button className='pagination-button' onClick={handleLeftArrowClick}>
             <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
           </button>
           {startPage > 1 && (
             <>
               <button
-                className={`pagination-button ${startPage === 1 ? 'active buttonBg' : ''
+                className={`pagination-button ${startPage === 1 ? 'active buttonBg text-white' : ''
                   }`}
                 onClick={() => handlePageChange(1)}
               >
@@ -318,18 +397,18 @@ const Page = () => {
               )}
             </>
           )}
-          {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
+          {Array.from({ length: Math.min(5, endPage - startPage + 1) }, (_, index) => {
             const page = startPage + index;
-            return page > 0 && page <= totalPages ? (
+            return (
               <button
                 key={page}
-                className={`pagination-button ${page === clickedPage ? 'active buttonBg' : ''
+                className={`pagination-button ${page === clickedPage ? 'active buttonBg text-white' : ''
                   }`}
                 onClick={() => handlePageChange(page)}
               >
                 {page}
               </button>
-            ) : null;
+            );
           })}
           {endPage < totalPages && (
             <>
@@ -348,6 +427,7 @@ const Page = () => {
           <button className='pagination-button' onClick={handleRightArrowClick}>
             <Image src="/rightSideArrow.svg" alt='right' width={12} height={20} />
           </button>
+
         </div>
       </div>
     </div>

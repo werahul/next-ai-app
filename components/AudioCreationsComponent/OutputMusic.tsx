@@ -18,7 +18,10 @@ const OutputMusic = ({ video, image, music, audio, text }: any) => {
     }
   } else if (image) {
     return (
-      <img src={URL.createObjectURL(image)} alt="Uploaded Image" width={1000} height={200} className='overflow-hidden object-contain' />
+      // <img src={URL.createObjectURL(image)} alt="Uploaded Image" width={1000} height={200} className='overflow-hidden object-contain' />
+      <div className=" w-[120%] overflow-hidden">
+        <img src="waveAudio2.png" alt="AudioWave" className='w-full' />
+      </div>
     );
   } else if (music || audio) {
     return (
@@ -30,8 +33,8 @@ const OutputMusic = ({ video, image, music, audio, text }: any) => {
         <img src="waveAudio2.png" alt="AudioWave" className='w-full' />
       </div>
     );
-  } else if (text) {
-    return <div className='text-3xl font-bold'>{text}</div>
+    // } else if (text) {
+    //   return <div className='text-[43px] font-bold'>Output</div>
   } else {
     return (
       <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] text-center font-bold text-[43px]'>

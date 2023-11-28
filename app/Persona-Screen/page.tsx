@@ -1,9 +1,11 @@
 "use client"
 
-import PopUpDropdown from '@/components/ChatKnowledgeScreen/PopUpDropdown';
+import NationDropdown from '@/components/PersonaScreen/NationDropdown';
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import AddNewPersona from '@/components/PersonaScreen/AddNewPersona';
+import RatingStars from '@/components/RatingStars';
+import NationDropdownFillter from '@/components/PersonaScreen/NationDropdownFillter';
 
 const Page = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +14,7 @@ const Page = () => {
     const [showOptions, setShowOptions] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [age, setAge] = useState(0)
-    const [rating, setRating] = useState(50)
+    const [rating, setRating] = useState(0)
     const [activePerson, setActivePerson] = useState(null);
     const totalPages = 10;
 
@@ -30,10 +32,10 @@ const Page = () => {
     };
 
     const decreaseRating = () => {
-        setAge((prevRating) => Math.max(0, prevRating - 1));
+        setRating((prevRating) => Math.max(0, prevRating - 1));
     };
     const increaseRating = () => {
-        setAge((prevRating) => Math.min(99, prevRating + 1));
+        setRating((prevRating) => Math.min(5, prevRating + 1));
     };
 
     const handleAgeChange = (e: any) => {
@@ -54,11 +56,11 @@ const Page = () => {
     const handleRating = (e: any) => {
         const value = parseInt(e.target.value, 10);
 
-        if (value >= 0 && value <= 99) {
+        if (value >= 0 && value <= 5) {
             setRating(value);
 
-            // Calculate the left position based on the value (assuming a linear mapping from 0 to 99 to a width)
-            const left = `calc(${((value / 99) * 100)}% - 10px)`;
+            // Calculate the left position based on the value (assuming a linear mapping from 0 to 5 to a width)
+            const left = `calc(${((value / 5) * 100)}% - 10px)`;
             const currentExposureElement = document.querySelector('.numberOfImages-class');
 
             if (currentExposureElement instanceof HTMLElement) {
@@ -68,9 +70,19 @@ const Page = () => {
     };
 
 
+
     const calculateBackgroundForAge = (value: any) => {
         const minRange = 0;
         const maxRange = 99;
+        const percentage = ((value - minRange) / (maxRange - minRange)) * 100;
+        const clampedPercentage = Math.min(100, Math.max(0, percentage));
+        const background = `linear-gradient(to right, #73F89D 0%, #48A0F9 ${clampedPercentage}%, #fff ${clampedPercentage}%)`;
+        return background;
+    };
+
+    const calculateBackgroundForRatings = (value: any) => {
+        const minRange = 0;
+        const maxRange = 5;
         const percentage = ((value - minRange) / (maxRange - minRange)) * 100;
         const clampedPercentage = Math.min(100, Math.max(0, percentage));
         const background = `linear-gradient(to right, #73F89D 0%, #48A0F9 ${clampedPercentage}%, #fff ${clampedPercentage}%)`;
@@ -251,7 +263,9 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <img src={item.modelImage} alt='models' className='w-[170px] h-auto -mt-2 cursor-pointer' />
-                                    <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                                    <div className="mb-2">
+                                        <RatingStars />
+                                    </div>
 
                                 </div>
                                 <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
@@ -308,39 +322,40 @@ const Page = () => {
                                             </label>
                                             <div className="flex items-center space-x-3">
 
-                                                {/* <div className="flex flex-col items-center justify-center -mt-1">
-                                                    <p className="text-[9px] font-semibold">00</p>
-                                                    <button onClick={(e) => { e.preventDefault(); decreaseAge(); }} className="font-bold text-[20px] -mt-3">
+                                                <div className="flex flex-col items-center justify-center -mt-1">
+                                                    <p className="text-[9px] font-semibold">0</p>
+                                                    <button onClick={(e) => { e.preventDefault(); decreaseRating(); }} className="font-bold text-[20px] -mt-3">
                                                         -
                                                     </button>
-                                                </div> */}
-                                                <div className="w-full relative px-5">
+                                                </div>
+                                                <div className="w-full relative">
                                                     <input
                                                         type="range"
                                                         id="rating"
                                                         min="0"
-                                                        max="99"
+                                                        max="5"
                                                         value={rating}
                                                         onChange={handleRating}
-                                                        style={{ background: calculateBackgroundForAge(rating) }}
+                                                        style={{ background: calculateBackgroundForRatings(rating) }}
                                                     />
-                                                    {/* <span
+                                                    <span
                                                         className="absolute text-[10px] font-[600] top-[-8px]"
-                                                        style={{ left: `calc(${((age / 99) * 100)}% - 1px)` }}
+                                                        style={{ left: `calc(${((rating / 5) * 100)}% - 1px)` }}
                                                     >
-                                                        {age}
-                                                    </span> */}
+                                                        {rating}
+                                                    </span>
+
 
 
 
                                                 </div>
 
-                                                {/* <div className="flex flex-col items-center justify-center -mt-1">
-                                                    <p className="text-[9px] font-semibold">99</p>
-                                                    <button onClick={(e) => { e.preventDefault(); increaseAge(); }} className="font-bold text-[20px] -mt-3">
+                                                <div className="flex flex-col items-center justify-center -mt-1">
+                                                    <p className="text-[9px] font-semibold">5</p>
+                                                    <button onClick={(e) => { e.preventDefault(); increaseRating(); }} className="font-bold text-[20px] -mt-3">
                                                         +
                                                     </button>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="flex space-x-2">
@@ -365,7 +380,7 @@ const Page = () => {
                                         </div>
                                         <div className="flex space-x-2">
                                             <label htmlFor="nation" className="whitespace-nowrap">Nation :</label>
-                                            <input type="text" id="nation" placeholder="Select a nation" className="placeholder-black text-xs w-[60%] mb-3 outline-none p-1 border rounded-[5px]" />
+                                            <NationDropdownFillter/>
                                         </div>
                                         <button
                                             type="submit"
@@ -423,7 +438,9 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <img src={item.modelImage} alt='models' className='w-[170px] h-auto -mt-2 cursor-pointer' />
-                                    <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                                    <div className="mb-2">
+                                        <RatingStars />
+                                    </div>
 
                                 </div>
                                 <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
@@ -595,8 +612,9 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <img src={item.modelImage} alt='models' className='w-[170px] h-auto -mt-2 cursor-pointer' />
-                                    <Image src="/ratingStars.svg" alt='stars' width={100} height={20} className='mb-2' />
-
+                                    <div className="mb-2">
+                                        <RatingStars />
+                                    </div>
                                 </div>
                                 <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
                             </div>
@@ -728,59 +746,59 @@ const Page = () => {
                 )}
 
 
-<div className='pagination flex justify-center space-x-[55px] mt-10'>
-    <button className='pagination-button' onClick={handleLeftArrowClick}>
-        <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
-    </button>
-    {startPage > 1 && (
-        <>
-            <button
-                className={`pagination-button ${startPage === 1 ? 'active buttonBg text-white' : ''
-                    }`}
-                onClick={() => handlePageChange(1)}
-            >
-                1
-            </button>
-            {startPage > 2 && (
-                <span className="pagination-ellipsis my-auto">...</span>
-            )}
-        </>
-    )}
-    {Array.from({ length: Math.min(5, endPage - startPage + 1) }, (_, index) => {
-        const page = startPage + index;
-        return (
-            <button
-                key={page}
-                className={`pagination-button ${page === clickedPage ? 'active buttonBg text-white' : ''
-                    }`}
-                onClick={() => handlePageChange(page)}
-            >
-                {page}
-            </button>
-        );
-    })}
-    {endPage < totalPages && (
-        <>
-            {endPage < totalPages - 1 && (
-                <span className="pagination-ellipsis my-auto">...</span>
-            )}
-            <button
-                className={`pagination-button ${endPage === totalPages ? 'active paginationBG' : ''
-                    }`}
-                onClick={() => handlePageChange(totalPages)}
-            >
-                {totalPages}
-            </button>
-        </>
-    )}
-    <button className='pagination-button' onClick={handleRightArrowClick}>
-        <Image src="/rightSideArrow.svg" alt='right' width={12} height={20} />
-    </button>
-   
-</div>
+                <div className='pagination flex justify-center space-x-[55px] mt-10'>
+                    <button className='pagination-button' onClick={handleLeftArrowClick}>
+                        <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
+                    </button>
+                    {startPage > 1 && (
+                        <>
+                            <button
+                                className={`pagination-button ${startPage === 1 ? 'active buttonBg text-white' : ''
+                                    }`}
+                                onClick={() => handlePageChange(1)}
+                            >
+                                1
+                            </button>
+                            {startPage > 2 && (
+                                <span className="pagination-ellipsis my-auto">...</span>
+                            )}
+                        </>
+                    )}
+                    {Array.from({ length: Math.min(5, endPage - startPage + 1) }, (_, index) => {
+                        const page = startPage + index;
+                        return (
+                            <button
+                                key={page}
+                                className={`pagination-button ${page === clickedPage ? 'active buttonBg text-white' : ''
+                                    }`}
+                                onClick={() => handlePageChange(page)}
+                            >
+                                {page}
+                            </button>
+                        );
+                    })}
+                    {endPage < totalPages && (
+                        <>
+                            {endPage < totalPages - 1 && (
+                                <span className="pagination-ellipsis my-auto">...</span>
+                            )}
+                            <button
+                                className={`pagination-button ${endPage === totalPages ? 'active paginationBG' : ''
+                                    }`}
+                                onClick={() => handlePageChange(totalPages)}
+                            >
+                                {totalPages}
+                            </button>
+                        </>
+                    )}
+                    <button className='pagination-button' onClick={handleRightArrowClick}>
+                        <Image src="/rightSideArrow.svg" alt='right' width={12} height={20} />
+                    </button>
+
+                </div>
 
 
-                
+
             </div>
         </div>
     );

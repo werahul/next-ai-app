@@ -445,8 +445,24 @@ input[type="range"] {
   padding: 0 18px;
 
 }
+.popUpSelectWithoutImage {
+  background-image: url("/blank.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  /* background-position: 34.5rem; */
+  background-position: right 10px center;
+
+  padding: 0 18px;
+
+}
 .noShodow{
   box-shadow: none;
   text-shadow: none;
   filter: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"] {
+  -webkit-appearance: none;
+  margin: 0;
 }

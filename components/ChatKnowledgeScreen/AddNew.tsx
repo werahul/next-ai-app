@@ -96,8 +96,8 @@ const AddNew = () => {
   return (
     <div className="relative">
       <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[33px]">
-        <h4 className="px-5 pt-[15px] pb-[11px] text-[16px] font-bold">Train your voice</h4>
-        <section className="bg-white w-[250px] h-[175px] border mx-5 rounded-[10px] z-10 flex justify-center items-center boxShadow">
+        <h4 className="px-5 pt-[15px] pb-[11px] text-[16px] font-bold">Generate knowledge</h4>
+        <section className="bg-[#fcfcfc] w-[250px] h-[175px] border mx-5 rounded-[10px] z-10 flex justify-center items-center boxShadow">
           <Image
             src="/addPlus.svg"
             alt="Add More"
@@ -118,12 +118,25 @@ const AddNew = () => {
         </div>
         <div className="text-zinc-900 text-base font-semibold font-['Inter'] pl-5 py-2">Uploaded Files</div>
         <div className="grid grid-cols-2 px-5 gap-x-3 gap-y-3">
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer" />
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer" />
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer" />
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer" />
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer" />
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer" />
+          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
+            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          </div>
+          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
+            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          </div>
+          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
+            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          </div>
+          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
+            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          </div>
+          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
+            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          </div>
+          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
+            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          </div>
+
         </div>
       </form>
 
@@ -144,29 +157,48 @@ const AddNew = () => {
               </div>
 
               <div className="flex">
-                {/* <label htmlFor="uploadFile">Upload a Wav file or a zip of wav files:</label> */}
-                <input type="file" id="uploadFile" accept=".wav, .zip" className="w-full mb-3 border p-2 rounded-[5px]" />
+                <input
+                  type="file"
+                  id="uploadFile"
+                  accept=".pdf, .doc, .docx, .csv, .xls, .xlsx, .folder/*"
+                  className="w-full mb-3 border p-2 rounded-[5px]" />
               </div>
 
               <div className="flex space-x-3">
                 <label htmlFor="youtubeLink" className="whitespace-nowrap">Youtube Link :</label>
-                <input type="text" id="youtubeLink" className="w-full mb-3 outline-none px-2 border rounded-[5px]" placeholder="Upload link"/>
+                <input
+                  type="url"
+                  id="urlLink"
+                  className="w-full mb-3 outline-none px-2 border rounded-[5px]"
+                  placeholder="Upload link"
+                  pattern="https?://.+"
+                />
               </div>
               <div className="flex space-x-3">
                 <label htmlFor="urlLink" className="whitespace-nowrap">URL Link :</label>
-                <input type="text" id="urlLink" className="w-full mb-3 outline-none px-2 border rounded-[5px]" placeholder="Upload link" />
+                <input
+                  type="url"
+                  id="urlLink"
+                  className="w-full mb-3 outline-none px-2 border rounded-[5px]"
+                  placeholder="Upload link"
+                  pattern="https?://.+"
+                />
               </div>
 
               <div><span className="text-black text-[10px] font-bold font-['Inter']">Note:</span><span className="text-black text-[10px] font-normal font-['Inter']"> For more than one link, separate with a ;</span></div>
 
               <div className="flex justify-start items-center">
                 <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image :</label>
-                <input type="file" id="uploadFile" accept=".wav, .zip" className="w-full mb-3 border p-2 rounded-[5px]" />
+                <input
+                  type="file"
+                  id="uploadFile"
+                  accept=".jpeg, .jpg, .png, .gif, .bmp, .svg, image/jpeg, image/jpg, image/png, image/gif, image/bmp, image/svg+xml"
+                  className="w-full mb-3 border p-2 rounded-[5px]" />
               </div>
 
               <div>
-               
-                
+
+
               </div>
             </div>
             <button

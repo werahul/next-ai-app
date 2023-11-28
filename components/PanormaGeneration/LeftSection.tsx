@@ -435,16 +435,16 @@ const LeftSection = () => {
                     <div className="text-black text-[10px] font-semibold font-['Inter']">Seed</div>
                     <input
                         type="text"
-                        placeholder='-1'
+                        placeholder='0'
                         className='placeholder-black text-[9px] w-[38.20px] h-3.5 bg-white rounded-sm shadow border outline-none border-stone-300 p-1 px-2'
                         value={inputValue}
                         onChange={handleInputChange}
                     />
                 </div>
                 <div className="flex justify-between items-center  mt-3">
-                    <button onClick={resetAll} className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Reset</button>
+                    <button onClick={resetAll} className="w-14 h-[22px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Reset</button>
 
-                    <button className="w-11 h-[19px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Save</button>
+                    <button className="w-14 h-[22px] bg-gray-800 rounded-[3px] text-white text-[10px] font-medium font-['Inter'] cursor-pointer">Save</button>
                 </div>
 
                 <div className="px-0 pt-0 mt-6 mb-3 z-10">

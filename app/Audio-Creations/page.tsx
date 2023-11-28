@@ -87,8 +87,8 @@ const page = ({ selectedFile, inputValue, onInputChange }: any) => {
             <OutputMusic music={musicData} />
           ) : audioData ? (
             <OutputMusic audio={audioData} />
-          ) : textData ? (
-            <OutputMusic text={textData} />
+          // ) : textData ? (
+          //   <OutputMusic text={textData} />
           ) : (
             <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] font-bold text-[43px] boxBg dropShadow rounded-[8px] h-[571px] flex flex-col items-center justify-center overflow-hidden '>Output</div>
           )}

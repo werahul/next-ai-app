@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import NationDropdown from "./NationDropdown";
 
 const AddNewPersona = () => {
     const [isPopupOpen, setPopupOpen] = useState(false);
@@ -123,7 +124,7 @@ const AddNewPersona = () => {
 
             {isPopupOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center font-semibold">
-                    <div className="bg-white w-[569px] h-[640px] popup-content overflow-auto">
+                    <div className="bg-white w-[569px] h-auto popup-content overflow-auto pb-3">
                         <div className="p-5 space-y-3">
                             <div className="flex space-x-2">
                                 <label htmlFor="voiceName" className="whitespace-nowrap">Name:</label>
@@ -132,11 +133,17 @@ const AddNewPersona = () => {
                             <div className="flex justify-between">
                                 <div className="flex space-x-2">
                                     <label htmlFor="age" className="whitespace-nowrap">Age:</label>
-                                    <input type="text" id="voiceName" className="w-[85px] mb-3 outline-none px-2 border rounded-[5px]" />
+                                    <input
+                                        type="number"
+                                        id="voiceName"
+                                        className="w-[85px] mb-3 outline-none px-2 border rounded-[5px]"
+
+                                    />
+
                                 </div>
                                 <div className="flex space-x-2 ml-5">
                                     <label htmlFor="gender" className="whitespace-nowrap">Gender:</label>
-                                    <div className="flex space-x-3 justify-center items-center -mt-3">
+                                    <div className="flex space-x-3 justify-center items-center">
                                         <input type="radio" id="male" name="gender" value="male" checked />
                                         <label htmlFor="male">Male</label>
                                         <input type="radio" id="female" name="gender" value="female" checked />
@@ -166,11 +173,11 @@ const AddNewPersona = () => {
                             <div className="flex space-x-3">
                                 <div className="flex space-x-2">
                                     <label htmlFor="personality" className="whitespace-nowrap">Personality :</label>
-                                    <input type="text" id="personality" className="w-full mb-3 outline-none px-2 border rounded-[5px]" />
+                                    <input type="text" id="personality" className="w-[160px] mb-3 outline-none px-2 border rounded-[5px]" />
                                 </div>
                                 <div className="flex space-x-2">
                                     <label htmlFor="nation" className="whitespace-nowrap">Nation :</label>
-                                    <input type="text" id="nation" placeholder="Select a nation" className="placeholder-black text-xs w-full mb-3 outline-none px-2 border rounded-[5px]" />
+                                    <NationDropdown />
                                 </div>
 
 
@@ -195,7 +202,7 @@ const AddNewPersona = () => {
 
                             <div className="flex justify-start items-center">
                                 <label htmlFor="uploadFile" className="whitespace-nowrap  pb-5 mr-3">Upload Image</label>
-                                <input type="file" id="uploadFile" accept=".jpeg, .png, .svg" className="w-full text-sm mb-3 border p-1 rounded-[5px]" />
+                                <input type="file" id="uploadFile" accept=".jpeg, .jpg, .png, .gif, .bmp, .svg, image/jpeg, image/jpg, image/png, image/gif, image/bmp, image/svg+xml" className="w-full text-sm mb-3 border p-1 rounded-[5px]" />
                             </div>
                         </div>
                         <button
