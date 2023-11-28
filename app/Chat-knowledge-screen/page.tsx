@@ -69,12 +69,12 @@ const Page = () => {
   const items = [
     // Add your data objects here
     // Example:
-    { id: 1, name: 'Person 1', type: 'Chat', modelImg: "/model1.svg" },
-    { id: 2, name: 'Person 2', type: 'Chat', modelImg: "/model2.svg" },
-    { id: 3, name: 'Person 3', type: 'Chat', modelImg: "/model3.svg" },
-    { id: 4, name: 'Person 4', type: 'Chat', modelImg: "/model4.svg" },
-    { id: 5, name: 'Person 5', type: 'Chat', modelImg: "/model5.svg" },
-    { id: 6, name: 'Person 6', type: 'Chat', modelImg: "/model6.svg" },
+    { id: 1, name: 'Orca', type: 'Chat', modelImg: "/model1.svg" },
+    { id: 2, name: 'Liama2', type: 'Chat', modelImg: "/model2.svg" },
+    { id: 3, name: 'Nous', type: 'Chat', modelImg: "/model3.svg" },
+    { id: 4, name: 'Heumes', type: 'Chat', modelImg: "/model4.svg" },
+    { id: 5, name: 'Wizardlm', type: 'Chat', modelImg: "/model5.svg" },
+    { id: 6, name: 'Mistral', type: 'Chat', modelImg: "/model6.svg" },
     { id: 7, name: 'Person 7', type: 'Chat' },
     { id: 8, name: 'Person 8', type: 'Chat' },
     { id: 9, name: 'Person 9', type: 'Chat' },
