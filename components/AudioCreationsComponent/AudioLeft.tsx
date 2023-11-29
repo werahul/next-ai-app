@@ -1,7 +1,7 @@
 "use client"
 
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 
 
@@ -26,6 +26,8 @@ const AudioLeft = (props: AudioLeftProps) => {
     const [streamingInterval, setStreamingInterval] = useState(0);
     const [seed, setSeed] = useState(0);
     const [textValue, setTextValue] = useState("");
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef<HTMLAudioElement>(null);
 
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -34,6 +36,15 @@ const AudioLeft = (props: AudioLeftProps) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedMusic, setSelectedMusic] = useState(null);
     const [selectedAudio, setSelectedAudio] = useState(null);
+
+    const togglePlayPause = () => {
+        if (audioRef.current?.paused) {
+            audioRef.current.play();
+        } else {
+            audioRef.current?.pause();
+        }
+        setIsPlaying(!isPlaying);
+    };
 
     const handleTextFileChange = (event: any) => {
         const file = event.target.files;
@@ -440,7 +451,7 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div className="mx-auto flex flex-col rounded-[8px] pt-8 items-center h-[204px] w-[250px]  z-10 bg-transparent">
                     {selectedImage ? (
-                        <img src={URL.createObjectURL(selectedImage)} alt="Uploaded Image" className='overflow-hidden object-contain w-[215px] aspect-video rounded-lg' />
+                        <img src={URL.createObjectURL(selectedImage)} alt="Uploaded Image" className='overflow-hidden object-contain w-[215px] -mt-1 aspect-video rounded-lg' />
                     ) : (
                         <div className="mx-auto flex flex-col rounded-[8px] pt-6     items-center h-[204px] w-[250px]  z-10 bg-transparent">
                             <input type="file" accept={selectedOption === "image" ? "image/*" : ""} id="file-input2" onChange={handleImageFileChange} onClick={() => {
@@ -479,12 +490,22 @@ const AudioLeft = (props: AudioLeftProps) => {
             return (
                 <div className="">
                     {selectedAudio ? (
-                        <div className="relative w-[92%] h-[130px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
+                        <div className="relative w-[92%] h-[120px] flex items-start justify-center bg-white rounded-lg mt-[26px] z-10">
                             <img src="waveAudio4.png" alt="Wave Length" className="w-full my-auto" />
                             <div className=" absolute top-[35%]">
-                                <img src="playAudio.png" alt="Wave Length" className="w-10 my-auto cursor-pointer" />
+                                <Image
+                                    src={isPlaying ? "/pause.svg" : "/playButton.svg"}
+                                    alt={isPlaying ? 'pause' : 'play'}
+                                    width={20}
+                                    height={18}
+                                    className='cursor-pointer'
+                                    onClick={togglePlayPause}
+                                />
+                                <audio ref={audioRef} controls hidden>
+                                    <source src={URL.createObjectURL(selectedAudio)} type="audio/mp3" />
+                                    Your browser does not support the audio tag.
+                                </audio>
                             </div>
-
 
                         </div>
                     ) : (<div className="mx-auto flex flex-col rounded-[8px] pt-14 items-center h-[204px] w-[250px]  z-10 bg-transparent ">

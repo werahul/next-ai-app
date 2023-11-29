@@ -118,17 +118,21 @@ const AddNew = () => {
         </div>
         <div className="text-zinc-900 text-base font-semibold font-['Inter'] pl-5 py-2">Uploaded Files</div>
         <div className="grid grid-cols-2 px-5 gap-x-3 gap-y-3">
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
-            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          <div className="w-[100%] relative h-[139.77px] bg-white rounded-xl cursor-pointer ">
+            <img src="/pdfImg.png" alt="" className="w-[96%]"/>
+            <img src="/cross.svg" alt="croxx" className="absolute top-0 right-0 w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
           </div>
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
-            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          <div className="w-[100%] relative h-[139.77px] bg-white rounded-xl cursor-pointer ">
+            <img src="/jpgImg.png" alt="" className="w-[96%] rounded-xl"/>
+            <img src="/cross.svg" alt="croxx" className="absolute top-1 right-1 w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
           </div>
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
-            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          <div className="w-[100%] relative h-[139.77px] bg-white rounded-xl cursor-pointer ">
+            <img src="/csvImg.png" alt="" className="w-[96%] rounded-xl"/>
+            <img src="/cross.svg" alt="croxx" className="absolute top-1 right-1 w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
           </div>
-          <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
-            <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
+          <div className="w-[100%] relative h-[139.77px] bg-white rounded-xl cursor-pointer ">
+            <img src="/docsImg.png" alt="" className="w-[96%] rounded-xl"/>
+            <img src="/cross.svg" alt="croxx" className="absolute top-1 right-1 w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
           </div>
           <div className="w-[100%] h-[139.77px] bg-stone-300 rounded-xl cursor-pointer p-2">
             <img src="/cross.svg" alt="croxx" className="ml-auto w-[18px] hover:bg-gray-20 rounded-full p-1 transition-all" />
