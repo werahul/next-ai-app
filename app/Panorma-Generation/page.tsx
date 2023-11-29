@@ -2,8 +2,6 @@ import React from 'react'
 import LeftSection from '@/components/PanormaGeneration/LeftSection'
 import PanormaOutput from '@/components/PanormaGeneration/PanormaOutput'
 import RightSection from '@/components/PanormaGeneration/RightSection'
-import SomeParentComponent from '@/components/PanormaGeneration/SomeParentComponent'
-
 
 const page = () => {
 
