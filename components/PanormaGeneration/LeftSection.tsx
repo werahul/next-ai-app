@@ -450,7 +450,7 @@ const LeftSection = () => {
                 <div className="px-0 pt-0 mt-6 mb-3 z-10">
                     <button
                         type="button"
-                        className="buttonBg w-full h-[50px] rounded-[8px] text-[14px] text-white font-bold"
+                        className="buttonBg w-full h-[56px] rounded-[8px] text-[14px] text-white font-bold"
                     >
                         Generate
                     </button>
