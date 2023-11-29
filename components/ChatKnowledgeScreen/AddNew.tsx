@@ -95,7 +95,7 @@ const AddNew = () => {
 
   return (
     <div className="relative">
-      <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[33px]">
+      <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[10px]">
         <h4 className="px-5 pt-[15px] pb-[11px] text-[16px] font-bold">Generate knowledge</h4>
         <section className="bg-[#fcfcfc] w-[250px] h-[175px] border mx-5 rounded-[10px] z-10 flex justify-center items-center boxShadow">
           <Image

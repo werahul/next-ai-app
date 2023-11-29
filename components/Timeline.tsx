@@ -241,12 +241,12 @@ const Timeline = ({ videoDuration, audio, music }: any) => {
           <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer xxl:w-[20px]' />
           {audio && (
             // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
-            <div className="border-y border-x-4 rounded-lg border-black m-1 cursor-ew-resize">
+            <div className="my-1 w-[360px] xxl:pl-10 2xl:pl-3">
               <audio ref={audioRef} controls hidden>
                 <source src={URL.createObjectURL(audio)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
-              <img src="waveAudio3.png" alt="AudioWave" className='w-[300px] h-[60px] ' />
+              <img src="waveAudio3.png" alt="AudioWave" className='w-[360px] border-x-4 border-y cursor-ew-resize rounded-lg border-black mt-1 h-[60px] ' />
             </div>
           )}
           {/* {music && (

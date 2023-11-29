@@ -31,7 +31,7 @@ const TopInputAndOutput = () => {
 
                             }} />
                             <label htmlFor="file-input2" className="cursor-pointer">
-                                
+
                                 <p className="text-zinc-900 text-[43px] font-semibold font-['Inter'] pt-[30px]">
                                     input
                                 </p>
@@ -40,7 +40,23 @@ const TopInputAndOutput = () => {
                     }
                 </div>
 
-                <div className="w-[100%] h-[400px] bg-white dropShadow rounded-lg backdrop-blur-[20px] flex items-center justify-center text-zinc-900 text-[43px] font-semibold font-['Inter']" >Output</div>
+                <div className="w-[100%] h-[400px] bg-white dropShadow rounded-lg backdrop-blur-[20px] flex items-center justify-center text-zinc-900 text-[43px] font-semibold font-['Inter']" >
+                    <div className="w-[100%] h-[400px] bg-white dropShadow rounded-lg backdrop-blur-[20px] flex items-center justify-center text-zinc-900 text-[43px] font-semibold font-['Inter']" >
+                        {selectedVideo ? (
+                            <video controls width={215} height={204} className='w-full h-full'>
+                                <source src={URL.createObjectURL(selectedVideo)} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        ) : (
+                            <div className="mx-auto flex flex-col rounded-[8px] pt-6 items-center h-[204px] w-[250px] z-10 bg-transparent">
+
+                                <p className="text-zinc-900 text-[43px] font-semibold font-['Inter'] pt-[30px]">
+                                    Output
+                                </p>
+                            </div>)
+                        }
+                    </div>
+                </div>
                 <DropdownDubbings />
             </div>
             <div className='flex justify-between gap-x-8 px-[200px] py-0 mb-4'>

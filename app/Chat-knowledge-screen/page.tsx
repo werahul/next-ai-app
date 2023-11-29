@@ -57,6 +57,19 @@ const Page = () => {
     setCurrentPage(clickedPage);
   }, [clickedPage]);
 
+  useEffect(() => {
+    const handleOutsideClick = (event: any) => {
+        if (showPopup && !event.target.closest(".popup-content")) {
+            onClosePopUp();
+        }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+        document.removeEventListener("click", handleOutsideClick);
+    };
+}, [showPopup]);
   // Calculate the range of visible pages
   const maxVisiblePages = 4;
   let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
@@ -86,7 +99,7 @@ const Page = () => {
 
 
   return (
-    <div className='max-container flexTwo padding-container3 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10'>
+    <div className='max-container flexTwo padding-container3 gap-10 pt-10 pb-[10px] md:gap-10 lg:pt-10'>
       <div>
         <AddNew />
       </div>
@@ -126,7 +139,7 @@ const Page = () => {
             {items.map((item) => (
               <div key={item.id} className='w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD]'>
                 <div className='w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 flex'>
-                  <div className="w-[180px] xxl:w-[198px] h-[200px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
+                  <div className="w-[180px] xxl:w-[198px] h-[200px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex  ">
                     <div className='flex justify-between space-x-[140px] mt-2 '>
                       <Image src="/ibtn.svg" alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
                       <div className="relative">
@@ -160,7 +173,10 @@ const Page = () => {
 
                       </div>
                     </div>
-                    <img src={item.modelImg} alt="" className='-mt-8' />
+                    <div className="w-40 -mt-5">
+                      <img src={item.modelImg} alt="" className='w-auto ' />
+                    </div>
+
                     <div className="mb-2">
                       <RatingStars />
                     </div>
