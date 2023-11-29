@@ -110,7 +110,7 @@ const AddNew = () => {
         <div className="px-5 pt-[18px]">
           <button
             type="button"
-            className="buttonBg w-full h-[50px] rounded-[8px] text-[14px] text-white font-bold"
+            className="buttonBg w-full h-[56px] rounded-[8px] text-[14px] text-white font-bold"
 
           >
             Generate
@@ -203,7 +203,7 @@ const AddNew = () => {
             </div>
             <button
               type="submit"
-              className="buttonBg w-[93%] h-[50px] mx-[19px] rounded-[8px] text-[14px] text-white font-bold"
+              className="buttonBg w-[93%] h-[56px] mx-[19px] rounded-[8px] text-[14px] text-white font-bold"
               onClick={closePopup}
             >
               Submit

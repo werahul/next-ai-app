@@ -146,16 +146,16 @@ const Page = () => {
     const items = [
         // Add your data objects here
         // Example:
-        { id: 1, name: 'Chat With SHAHRUKH KHAN', modelImage: "/model1.svg" },
-        { id: 2, name: 'Chat With SONAKSHI', modelImage: "/model2.svg" },
-        { id: 3, name: 'Chat With PRIYANKA', modelImage: "/model3.svg" },
-        { id: 4, name: 'Chat With AKSHAY', modelImage: "/model4.svg" },
-        { id: 5, name: 'Chat With PERSON NAME', modelImage: "/blank.png" },
-        { id: 6, name: 'Chat With PERSON NAME', modelImage: "/blank.png" },
-        { id: 7, name: 'Chat With PERSON NAME', modelImage: "/blank.png" },
-        { id: 8, name: 'Chat With PERSON NAME', modelImage: "/blank.png" },
-        { id: 9, name: 'Chat With PERSON NAME', modelImage: "/blank.png" },
-        { id: 10, name: 'Chat With PERSON NAME', modelImage: "/blank.png" },
+        { id: 1, name: 'SHAHRUKH KHAN', modelImage: "/model1.svg" },
+        { id: 2, name: 'SONAKSHI', modelImage: "/model2.svg" },
+        { id: 3, name: 'PRIYANKA', modelImage: "/model3.svg" },
+        { id: 4, name: 'AKSHAY', modelImage: "/model4.svg" },
+        { id: 5, name: 'PERSON NAME', modelImage: "/blank.png" },
+        { id: 6, name: 'PERSON NAME', modelImage: "/blank.png" },
+        { id: 7, name: 'PERSON NAME', modelImage: "/blank.png" },
+        { id: 8, name: 'PERSON NAME', modelImage: "/blank.png" },
+        { id: 9, name: 'PERSON NAME', modelImage: "/blank.png" },
+        { id: 10, name: 'PERSON NAME', modelImage: "/blank.png" },
 
         // ...
     ];
@@ -263,12 +263,14 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <img src={item.modelImage} alt='models' className='w-[170px] h-auto -mt-2 cursor-pointer' />
-                                    <div className="mb-2">
+
+                                    <div className="-mt-2 flex flex-col items-center justify-center gap-y-[2px]">
+                                        <p className="text-black text-[12px] font-semibold font-['Inter']">{item.name}</p>
                                         <RatingStars />
                                     </div>
 
                                 </div>
-                                <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
+                                <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>Chat With {item.name}</p>
                             </div>
                         ))}
                         {showPopup && (
@@ -380,11 +382,11 @@ const Page = () => {
                                         </div>
                                         <div className="flex space-x-2">
                                             <label htmlFor="nation" className="whitespace-nowrap">Nation :</label>
-                                            <NationDropdownFillter/>
+                                            <NationDropdownFillter />
                                         </div>
                                         <button
                                             type="submit"
-                                            className="buttonBg w-[100%] h-[50px]  rounded-[8px] tracking-widest text-[14px] text-white font-bold"
+                                            className="buttonBg w-[100%] h-[58px]  rounded-[8px] tracking-widest text-[14px] text-white font-bold"
                                             onClick={onClosePopUp}
                                         >
                                             APPLY
@@ -438,12 +440,13 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <img src={item.modelImage} alt='models' className='w-[170px] h-auto -mt-2 cursor-pointer' />
-                                    <div className="mb-2">
+                                    <div className="-mt-2 flex flex-col items-center justify-center gap-y-[2px]">
+                                        <p className="text-black text-[12px] font-semibold font-['Inter']">{item.name}</p>
                                         <RatingStars />
                                     </div>
 
                                 </div>
-                                <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
+                                <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>Chat With {item.name}</p>
                             </div>
                         ))}
                         {showPopup && (
@@ -558,7 +561,7 @@ const Page = () => {
                                         </div>
                                         <button
                                             type="submit"
-                                            className="buttonBg w-[100%] h-[50px]  rounded-[8px] tracking-widest text-[14px] text-white font-bold"
+                                            className="buttonBg w-[100%] h-[58px]  rounded-[8px] tracking-widest text-[14px] text-white font-bold"
                                             onClick={onClosePopUp}
                                         >
                                             APPLY
@@ -612,11 +615,12 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <img src={item.modelImage} alt='models' className='w-[170px] h-auto -mt-2 cursor-pointer' />
-                                    <div className="mb-2">
+                                    <div className="-mt-2 flex flex-col items-center justify-center gap-y-[2px]">
+                                        <p className="text-black text-[12px] font-semibold font-['Inter']">{item.name}</p>
                                         <RatingStars />
                                     </div>
                                 </div>
-                                <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>{item.name}</p>
+                                <p className='font-semibold flex justify-center text-xs items-center mt-3 text-white'>Chat With {item.name}</p>
                             </div>
                         ))}
                         {showPopup && (
@@ -731,7 +735,7 @@ const Page = () => {
                                         </div>
                                         <button
                                             type="submit"
-                                            className="buttonBg w-[100%] h-[50px] tracking-widest  rounded-[8px] text-[14px] text-white font-bold"
+                                            className="buttonBg w-[100%] h-[58px] tracking-widest  rounded-[8px] text-[14px] text-white font-bold"
                                             onClick={onClosePopUp}
                                         >
                                             APPLY
