@@ -15,6 +15,33 @@ const MainChatScreen = () => {
     const [activeItem, setActiveItem] = useState(0);
     const [activeGradaint, setActiveGradaint] = useState(null);
     const [activeItemId, setActiveItemId] = useState(null);
+    const [likeClicked, setLikeClicked] = useState(false);
+    const [dislikeClicked, setDislikeClicked] = useState(false);
+    const [likeClicked2, setLikeClicked2] = useState(false);
+    const [dislikeClicked2, setDislikeClicked2] = useState(false);
+
+    const handleLikeClick = () => {
+        setLikeClicked(!likeClicked);
+        setDislikeClicked(false);
+        // You can perform additional logic or handle the like action here
+    };
+
+    const handleDislikeClick = () => {
+        setDislikeClicked(!dislikeClicked);
+        setLikeClicked(false);
+        // You can perform additional logic or handle the dislike action here
+    };
+    const handleLikeClick2 = () => {
+        setLikeClicked2(!likeClicked2);
+        setDislikeClicked2(false);
+        // You can perform additional logic or handle the like action here
+    };
+
+    const handleDislikeClick2 = () => {
+        setDislikeClicked2(!dislikeClicked2);
+        setLikeClicked2(false);
+        // You can perform additional logic or handle the dislike action here
+    };
 
     const handleItemClick = (index: any) => {
         setActiveItem(index);
@@ -149,8 +176,23 @@ const MainChatScreen = () => {
                             </div>
                         </div>
                         <div className="flex mt-8">
-                            <img src="/LikeUnfilled.svg" alt="" className='cursor-pointer' />
-                            <img src="/dislikeUnfilled.svg" alt="" className='cursor-pointer' />
+                            <div className="">
+                                <img
+                                    src={likeClicked ? "/filledLike.png" : "/LikeUnfilled.svg"}
+                                    alt=""
+                                    className={`cursor-pointer ${likeClicked ? 'p-1' : ''}`}
+                                    onClick={handleLikeClick}
+                                />
+                            </div>
+                            <div className="">
+                                <img
+                                    src={dislikeClicked ? "/filledDislike.png" : "/dislikeUnfilled.svg"}
+                                    alt=""
+                                    className={`cursor-pointer ${dislikeClicked ? 'p-1' : ''}`}
+                                    onClick={handleDislikeClick}
+                                />
+                            </div>
+
                         </div>
                     </div>
                     <div className="w-full h-[0px] border border-stone-300 mt-6"></div>
@@ -168,8 +210,23 @@ const MainChatScreen = () => {
                             </div>
                         </div>
                         <div className="flex mt-8">
-                            <img src="/LikeUnfilled.svg" alt="" className='cursor-pointer' />
-                            <img src="/dislikeUnfilled.svg" alt="" className='cursor-pointer' />
+                            <div className="">
+                                <img
+                                    src={likeClicked2 ? "/filledLike.png" : "/LikeUnfilled.svg"}
+                                    alt=""
+                                    className={`cursor-pointer ${likeClicked2 ? 'p-1' : ''}`}
+                                    onClick={handleLikeClick2}
+                                />
+                            </div>
+                            <div className="">
+                                <img
+                                    src={dislikeClicked2 ? "/filledDislike.png" : "/dislikeUnfilled.svg"}
+                                    alt=""
+                                    className={`cursor-pointer ${dislikeClicked2 ? 'p-1' : ''}`}
+                                    onClick={handleDislikeClick2}
+                                />
+                            </div>
+
                         </div>
                     </div>
                     <div className="w-full h-[0px] border border-stone-300 mt-6"></div>
