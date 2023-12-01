@@ -79,7 +79,7 @@ const MainChatScreen = () => {
 
     return (
         <div className='flexTwo gap-x-6  max-container mb-4'>
-            <div className="max-w-[290px] min-w-[290px] h-[810px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
+            <div className="w-[290px] xxl:w-[350px] h-[810px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
                 <div className="flex items-center justify-between">
                     <div className="text-black text-xl font-medium font-Inter">Chat History</div>
                     <div className="">
@@ -266,7 +266,7 @@ const MainChatScreen = () => {
 
             </div>
             {isProfileDivPresent && (
-                <div  className="mainProfileDiv slideClass max-w-[290px] min-w-[290px] h-[810px] bg-white rounded-[10px] shadow dropShadow p-6 flex flex-col justify-start items-center">
+                <div  className="mainProfileDiv slideClass w-[290px] xxl:w-[350px] h-[810px] bg-white rounded-[10px] shadow dropShadow p-6 flex flex-col justify-start items-center">
                     <div className="w-[140px] h-[140px] rounded-full bg-green-300 flex items-center justify-center">
                         <img src="/bigProfile.svg" alt="" className='w-[105px]' />
                     </div>
