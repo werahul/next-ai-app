@@ -11,8 +11,10 @@ const MainChatScreen = () => {
     const showMenu = () => {
         setMenuVisibility(!isMenuVisible);
     };
-
+    const [activePerson, setActivePerson] = useState(null);
     const [activeItem, setActiveItem] = useState(0);
+    const [activeGradaint, setActiveGradaint] = useState(null);
+    const [activeItemId, setActiveItemId] = useState(null);
 
     const handleItemClick = (index: any) => {
         setActiveItem(index);
@@ -29,15 +31,6 @@ const MainChatScreen = () => {
         setShowMenuOption(false)
         setAddPlusClicked(true);
     };
-
-    const [activePerson, setActivePerson] = useState(null);
-
-    const [showCollapsibleContent, setShowCollapsibleContent] = useState(true);
-    const [isProfileDivPresent, setIisProfileDivPresent] = useState(false);
-
-    const handleCollapsClick = () => {
-        setShowCollapsibleContent(!showCollapsibleContent);
-    };
     const handlePersonClick = (id: any) => {
         if (activePerson === id) {
 
@@ -47,15 +40,29 @@ const MainChatScreen = () => {
             setActivePerson(id);
         }
     };
-    const showProfile = () => {
-        if (isProfileDivPresent == true) {
+    const showProfile = (id: any) => {
+        if (isProfileDivPresent == true && activeGradaint === id) {
             setIisProfileDivPresent(false)
+            setActiveGradaint(null)
         }
         else {
             setIisProfileDivPresent(true)
+            // setActiveItem(id)
+            setActiveGradaint(id)
+            setActiveItemId(id)
         }
 
+
     };
+
+    const [showCollapsibleContent, setShowCollapsibleContent] = useState(true);
+    const [isProfileDivPresent, setIisProfileDivPresent] = useState(false);
+
+    const handleCollapsClick = () => {
+        setShowCollapsibleContent(!showCollapsibleContent);
+    };
+
+
 
     const items = [
         // Add your data objects here
@@ -75,11 +82,9 @@ const MainChatScreen = () => {
     ];
 
 
-
-
     return (
         <div className='flexTwo gap-x-6  max-container mb-4'>
-            <div className="w-[290px] xxl:w-[350px] h-[810px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
+            <div className="w-[290px] xxl:w-[350px] h-[805px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
                 <div className="flex items-center justify-between">
                     <div className="text-black text-xl font-medium font-Inter">Chat History</div>
                     <div className="">
@@ -89,12 +94,14 @@ const MainChatScreen = () => {
 
                 <div className="mt-10">
                     {items.map((item) => (
-                        <div className=" flex flex-col space-y-0" key={item.id}>
-                            <div className={`relative flex justify-start items-center space-x-3 rounded-tl-[15px] rounded-tr-[15px] rounded-bl-[15px h-[68.71px] bg-transparent ${activePerson === item.id || (isProfileDivPresent && activePerson === item.id) ? 'px-3 bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''} ${isProfileDivPresent === true  } ` } >
-                                <div className="w-[54.04px] h-[54.04px] rounded-[27.02px] bg-blue-400 flex justify-center items-center cursor-pointer" onClick={showProfile}>
+                        <div className=" flex flex-col space-y-0">
+                            <div className={`relative flex justify-start items-center space-x-3 rounded-tl-[15px] rounded-bl-[15px] rounded-tr-[15px] rounded-bl-[15px h-[68.71px] bg-transparent ${activePerson === item.id ? 'px-3 bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''} ${activeGradaint === item.id ? 'px-3  bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''}  `} >
+                                <div className="w-[54.04px] h-[54.04px] rounded-[27.02px] bg-blue-400 flex justify-center items-center cursor-pointer" onClick={() => {
+                                    showProfile(item.id)
+                                }} >
                                     <img src="/profle.svg" alt="" className="w-10 h-10" />
                                 </div>
-                                <div className={`text-black text-[14px] font-semibold font-Inter uppercase ${activePerson === item.id ? 'text-white' : ''}`}>{item.name}</div>
+                                <div className={`text-black text-[14px] font-semibold font-Inter uppercase ${activePerson === item.id ? 'text-white' : ''} ${activeGradaint === item.id ? 'text-white' : ''}`}>{item.name}</div>
                                 <div className="absolute right-2" onClick={() => handlePersonClick(item.id)}>
                                     {activePerson === item.id ? (
                                         <img
@@ -128,7 +135,7 @@ const MainChatScreen = () => {
                     ))}
                 </div>
             </div>
-            <div className="mainChatDiv slideClass relative h-[810px] bg-white bg-opacity-95 rounded-lg backdrop-blur-[20px] dropShadow p-5" style={{ width: isProfileDivPresent ? '650px' : '950px' }} >
+            <div className="mainChatDiv slideClass relative h-[805px] bg-white bg-opacity-95 rounded-lg backdrop-blur-[20px] dropShadow p-5" style={{ width: isProfileDivPresent ? '650px' : '950px' }} >
                 <div className="senderProfileChat">
                     <div className="flex justify-between">
                         <div className=" flex items-center gap-x-3 ">
@@ -168,7 +175,7 @@ const MainChatScreen = () => {
                     <div className="w-full h-[0px] border border-stone-300 mt-6"></div>
                 </div>
                 <div className="codeSnip mt-8">
-                    <img src="/codeSnip.jpg" alt="" className='rounded-t-md mx-auto my-auto'/>
+                    <img src="/codeSnip.jpg" alt="" className='rounded-t-md mx-auto my-auto' />
                 </div>
 
                 <div className="w-[96%] absolute bottom-5">
@@ -266,19 +273,26 @@ const MainChatScreen = () => {
 
             </div>
             {isProfileDivPresent && (
-                <div  className="mainProfileDiv slideClass w-[290px] xxl:w-[350px] h-[810px] bg-white rounded-[10px] shadow dropShadow p-6 flex flex-col justify-start items-center">
-                    <div className="w-[140px] h-[140px] rounded-full bg-green-300 flex items-center justify-center">
-                        <img src="/bigProfile.svg" alt="" className='w-[105px]' />
-                    </div>
-                    <div className="text-black text-[28px] font-medium font-['Inter']">Person Name</div>
-                    <div className="text-black text-[15px] font-medium font-['Inter']">GENDER</div>
-                    <div className="text-black text-sm font-medium font-['Inter'] uppercase mt-1">country OCCUPATION</div>
-                    <div className="mt-1">
-                        <RatingStars />
-                    </div>
-
+                <div className="mainProfileDiv slideClass w-[290px] xxl:w-[350px] h-[805px] bg-white rounded-[10px] shadow dropShadow p-6 flex flex-col justify-start items-center">
+                    {items.map((item) => (
+                        // Assuming you have a variable like activeItemId to store the active item's id
+                        activeItemId === item.id && (
+                            <div key={item.id} className='text-center flex-col flex items-center justify-center'>
+                                <div className="w-[140px] h-[140px] rounded-full bg-green-300 flex items-center justify-center">
+                                    <img src="/bigProfile.svg" alt="" className="w-[105px]" />
+                                </div>
+                                <div className="text-black text-[28px] font-medium font-['Inter']">{item.name}</div>
+                                <div className="text-black text-[15px] font-medium font-['Inter']">GENDER</div>
+                                <div className="text-black text-sm font-medium font-['Inter'] uppercase mt-1">country OCCUPATION</div>
+                                <div className="mt-1">
+                                    <RatingStars />
+                                </div>
+                            </div>
+                        )
+                    ))}
                 </div>
             )}
+
         </div>
     )
 }
