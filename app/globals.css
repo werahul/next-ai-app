@@ -236,9 +236,19 @@ option {
 #file-input2 {
   display: none;
 }
+#file-input3 {
+  display: none;
+}
+#file-input4 {
+  display: none;
+}
 
 
 .buttonBg {
+  background: linear-gradient(101.67deg, #73F89D 0%, #48A0F9 100%);
+}
+
+.activeBg {
   background: linear-gradient(101.67deg, #73F89D 0%, #48A0F9 100%);
 }
 
@@ -465,4 +475,47 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"] {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* Chat Screen Styling */
+.transition-btn {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.transitionTransform{
+  animation: open 0.5s ease-in-out;
+}
+
+
+@keyframes open {
+  0% {
+    transform: translateY(42%);
+  }
+
+  100%{
+    transform: translateY(0);
+  }
+}
+
+.slideClass{
+  animation: slide 0.5s ease-in-out;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(42%);
+  }
+
+  100%{
+    transform: translateX(0);
+  }
 }

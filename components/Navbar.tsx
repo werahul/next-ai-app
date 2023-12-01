@@ -26,7 +26,7 @@ const Navbar = () => {
         <Image src="/logo.svg" alt="logo" width={52} height={50} />
       </div>
      <div className='flex items-center space-x-16'>
-     <div className="hidden space-x-8 lg:flex h-full">
+     <div className="lg:flex  hidden space-x-8 h-full">
         {/* Dropdown 1 */}
         <div className="relative group">
           <div className="regular-16 text-[#15181C] flexCenter cursor-pointer  pb-1.5 ">

@@ -35,7 +35,7 @@ const LetfChatProfile = () => {
     return (
         <>
             
-                <div className="w-[333px] h-[790px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
+                <div className="w-[60%]  h-[790px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
                     <div className="flex items-center justify-between">
                         <div className="text-black text-xl font-medium font-Inter">Chat History</div>
                         <div className="">
