@@ -65,6 +65,7 @@ const MainChatScreen = () => {
         } else {
 
             setActivePerson(id);
+            setActiveGradaint(null)
         }
     };
     const showProfile = (id: any) => {
@@ -77,6 +78,7 @@ const MainChatScreen = () => {
             // setActiveItem(id)
             setActiveGradaint(id)
             setActiveItemId(id)
+            setActivePerson(null)
         }
 
 
@@ -103,7 +105,7 @@ const MainChatScreen = () => {
         { id: 7, name: 'PERSON NAME', },
         { id: 8, name: 'PERSON NAME', },
         { id: 9, name: 'PERSON NAME', },
-        { id: 10, name: 'PERSON NAME', },
+        // { id: 10, name: 'PERSON NAME', },
 
         // ...
     ];
